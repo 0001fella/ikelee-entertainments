@@ -1,0 +1,26 @@
+@keyframes float-medium {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes float-soft {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Tailwind-friendly utility classes */
+.animate-float-medium {
+  animation: float-medium 5s ease-in-out infinite;
+}
+
+.animate-float-soft {
+  animation: float-soft 9s ease-in-out infinite;
+}

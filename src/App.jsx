@@ -1,7 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AudioContextProvider } from './components/AudioContextProvider';
-import MainLayout from './Layouts/MainLayout';
+import MainLayout from './layouts/MainLayout'; // ✅ MATCH THE CASE
+
 import { AnimatePresence, motion } from 'framer-motion';
 import ScrollToTop from './components/ScrollToTop'; // ✅ NEW
 

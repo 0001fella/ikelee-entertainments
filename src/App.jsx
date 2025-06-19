@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AudioContextProvider } from './components/AudioContextProvider';
-import MainLayout from './layouts/MainLayout'; // ✅ MATCH THE CASE
+import MainLayout from './layouts/MainLayout'; // ✅ Correct casing
 
 import { AnimatePresence, motion } from 'framer-motion';
-import ScrollToTop from './components/ScrollToTop'; // ✅ NEW
+import ScrollToTop from './components/ScrollToTop';
 
 // Page Components
 import Home from './components/Home';
@@ -70,10 +70,9 @@ function AnimatedRoutes() {
           <Route path="/services" element={wrapPage(<Services />)} />
           <Route path="/studio" element={wrapPage(<Studio />)} />
           <Route path="/portfolio" element={wrapPage(<Portfolio />)} />
-          
           <Route path="/booking" element={wrapPage(<Booking />)} />
           <Route path="/testimonials" element={wrapPage(<Testimonials />)} />
-          <Route path="/faqs" element={wrapPage(<FAQ />)} /> {/* ✅ Fixed */}
+          <Route path="/faqs" element={wrapPage(<FAQ />)} />
           <Route path="/contact" element={wrapPage(<Contact />)} />
         </Route>
         <Route
@@ -83,7 +82,10 @@ function AnimatedRoutes() {
               <div className="text-center p-8 bg-gray-800/70 backdrop-blur-lg rounded-xl border border-gray-700">
                 <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent">404</h1>
                 <p className="text-xl mb-6 text-gray-300">Page not found</p>
-                <a href="/" className="inline-block px-6 py-3 rounded-full bg-gradient-to-r from-amber-600 to-orange-500 text-white font-medium hover:shadow-lg transition-all hover:from-amber-500 hover:to-orange-400">
+                <a
+                  href="/"
+                  className="inline-block px-6 py-3 rounded-full bg-gradient-to-r from-amber-600 to-orange-500 text-white font-medium hover:shadow-lg transition-all hover:from-amber-500 hover:to-orange-400"
+                >
                   Return Home
                 </a>
               </div>
@@ -99,7 +101,7 @@ export default function App() {
   return (
     <AudioContextProvider>
       <Router>
-        <ScrollToTop /> {/* ✅ Smooth scroll reset */}
+        <ScrollToTop />
         <AnimatedRoutes />
       </Router>
     </AudioContextProvider>

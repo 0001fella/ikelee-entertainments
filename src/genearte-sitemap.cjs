@@ -1,7 +1,7 @@
 const sitemapGenerator = require('sitemap-generator');
 
 // Use your actual Netlify URL
-const generator = sitemapGenerator('https://IkeleEntertainments.netlify.app', {
+const generator = sitemapGenerator('https://IkeleEntertainments.vercel.app', {
   stripQuerystring: true,
   filepath: './public/sitemap.xml',
   maxDepth: 0,

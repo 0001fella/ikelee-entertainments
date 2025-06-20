@@ -397,20 +397,21 @@ Message: ${formData.message}`;
         </AnimatePresence>
       </header>
 
-      {/* Hero Section with Extended Green Curved Top */}
-      <section className="relative pt-48 pb-20 bg-gradient-to-br from-green-50 to-white">
-        {/* Green curved top - Extended */}
+      {/* Hero Section with Diamond Image Container */}
+      <section className="relative pt-40 pb-20 bg-gradient-to-br from-green-50 to-white">
+        {/* Green curved top */}
         <div className="absolute top-0 left-0 w-full h-48 md:h-64 bg-gradient-to-r from-green-700 to-green-900 rounded-b-[100px] md:rounded-b-[150px] overflow-hidden z-0">
           <div className="absolute top-0 left-0 w-20 h-20 rounded-full bg-green-500 opacity-20 -translate-x-10 -translate-y-10"></div>
           <div className="absolute bottom-0 right-0 w-24 h-24 rounded-full bg-green-400 opacity-20 translate-x-12 translate-y-12"></div>
         </div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+          <div className="flex flex-col-reverse md:flex-row gap-16 items-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
+              className="md:w-1/2"
             >
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
                 Ikelee <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-green-400">Entertainments</span>
@@ -443,28 +444,82 @@ Message: ${formData.message}`;
               </div>
             </motion.div>
             
+            {/* Diamond Image Container */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, scale: 0.8, rotate: 45 }}
+              animate={{ opacity: 1, scale: 1, rotate: 45 }}
               transition={{ delay: 0.3, duration: 0.6 }}
-              className="relative flex justify-center"
+              className="relative md:w-1/2 flex justify-center"
             >
               <motion.div
+                className="w-64 h-64 md:w-80 md:h-80 relative"
                 animate={{
-                  y: [0, -10, 0],
-                  rotate: [0, 5, 0],
+                  y: [0, -15, 0],
+                  rotate: [45, 50, 45],
                 }}
                 transition={{
-                  duration: 3,
+                  duration: 4,
                   repeat: Infinity,
                   ease: "easeInOut"
                 }}
               >
-                <img 
-                  src="/images/logo.png" 
-                  alt="African Masters Logo" 
-                  className="w-64 h-64 object-contain"
-                />
+                <div className="absolute inset-0 bg-gradient-to-br from-green-500 to-green-800 rounded-xl transform rotate-45 overflow-hidden shadow-2xl">
+                  <div className="absolute inset-2 bg-gray-200 border-2 border-dashed rounded-xl transform -rotate-45 overflow-hidden">
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.6 }}
+                      className="w-full h-full flex items-center justify-center"
+                    >
+                      <img 
+                        src="/images/logo.png" 
+                        alt="African Masters Logo" 
+                        className="w-full h-full object-contain transform rotate-45"
+                      />
+                    </motion.div>
+                  </div>
+                  
+                  {/* Floating elements */}
+                  <motion.div 
+                    className="absolute top-4 left-4 w-6 h-6 rounded-full bg-yellow-400"
+                    animate={{
+                      y: [0, -10, 0],
+                      scale: [1, 1.2, 1],
+                    }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: 0.2
+                    }}
+                  />
+                  <motion.div 
+                    className="absolute bottom-4 right-4 w-4 h-4 rounded-full bg-green-300"
+                    animate={{
+                      y: [0, 10, 0],
+                      scale: [1, 1.3, 1],
+                    }}
+                    transition={{
+                      duration: 3.5,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: 0.4
+                    }}
+                  />
+                  <motion.div 
+                    className="absolute top-1/2 left-1/4 w-3 h-3 rounded-full bg-white"
+                    animate={{
+                      y: [0, -15, 0],
+                      x: [0, 10, 0],
+                    }}
+                    transition={{
+                      duration: 4,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: 0.6
+                    }}
+                  />
+                </div>
               </motion.div>
             </motion.div>
           </div>
@@ -472,7 +527,12 @@ Message: ${formData.message}`;
       </section>
 
       {/* Stats Bar */}
-      <div className="bg-gradient-to-r from-green-700 to-green-900 text-white py-8">
+      <motion.div 
+        className="bg-gradient-to-r from-green-700 to-green-900 text-white py-8"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5 }}
+      >
         <div className="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-6">
           {[
             { value: "24+", label: "Microphones" },
@@ -480,15 +540,21 @@ Message: ${formData.message}`;
             { value: "A+", label: "Acoustics" },
             { value: "15+", label: "Years Experience" }
           ].map((stat, i) => (
-            <div key={i} className="text-center">
+            <motion.div 
+              key={i} 
+              className="text-center"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.7 + i * 0.1 }}
+            >
               <div className="text-2xl md:text-3xl font-bold">
                 {stat.value}
               </div>
               <div className="text-sm text-green-100 mt-1">{stat.label}</div>
-            </div>
+            </motion.div>
           ))}
         </div>
-      </div>
+      </motion.div>
 
       {/* Studio Features */}
       <section 
@@ -523,7 +589,7 @@ Message: ${formData.message}`;
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 0.5 }}
-                className="bg-white border border-gray-200 p-8 rounded-2xl shadow-sm hover:shadow-md transition-all group"
+                className="bg-white border border-gray-200 p-8 rounded-2xl shadow-sm hover:shadow-md transition-all group hover:border-green-300"
                 onMouseEnter={() => setHoveredCard(i)}
                 onMouseLeave={() => setHoveredCard(null)}
               >
@@ -577,17 +643,19 @@ Message: ${formData.message}`;
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
-                className="group relative rounded-xl overflow-hidden shadow-md cursor-pointer"
+                className="group relative rounded-xl overflow-hidden shadow-md cursor-pointer hover:shadow-xl transition-all"
                 onClick={() => {
                   setCurrentSlide(index);
                   setActiveImage(index);
                 }}
               >
-                <img
-                  src={image.img}
-                  alt={image.title}
-                  className="w-full h-64 object-cover transition-all duration-500 group-hover:scale-105"
-                />
+                <div className="aspect-video overflow-hidden">
+                  <img
+                    src={image.img}
+                    alt={image.title}
+                    className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105"
+                  />
+                </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                   <h3 className="text-lg font-bold text-white">{image.title}</h3>
                 </div>
@@ -630,7 +698,7 @@ Message: ${formData.message}`;
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1, duration: 0.5 }}
-                  className="bg-white border border-gray-200 p-6 rounded-2xl shadow-sm hover:shadow-md transition-all"
+                  className="bg-white border border-gray-200 p-6 rounded-2xl shadow-sm hover:shadow-md transition-all hover:border-green-300"
                 >
                   <div className="flex items-center mb-4">
                     <div className="w-12 h-12 flex items-center justify-center rounded-full bg-green-100 mr-4">
@@ -677,7 +745,7 @@ Message: ${formData.message}`;
                 ))}
               </div>
               <button className="mt-8 w-full py-3.5 rounded-xl bg-white text-green-800 font-semibold hover:bg-gray-100 transition-all flex items-center justify-center group">
-                
+                Download Full List
                 <motion.div 
                   className="ml-2"
                   animate={{ x: [0, 4, 0] }}
@@ -716,7 +784,13 @@ Message: ${formData.message}`;
           </motion.div>
 
           <div className="max-w-4xl mx-auto">
-            <div className="bg-white border border-gray-200 rounded-2xl p-8 md:p-12 shadow-sm">
+            <motion.div 
+              className="bg-white border border-gray-200 rounded-2xl p-8 md:p-12 shadow-sm"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
               <div className="flex flex-col md:flex-row items-center mb-8">
                 <div className="bg-gradient-to-r from-green-700 to-green-900 p-1.5 rounded-full mb-4 md:mb-0 md:mr-6">
                   <div className="bg-white p-2 rounded-full">
@@ -761,7 +835,7 @@ Message: ${formData.message}`;
                   <ChevronRight size={24} className="text-green-600" />
                 </button>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>

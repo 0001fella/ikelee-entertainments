@@ -1,19 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { 
-  Mic, Disc, Headphones, Music, Video, Radio, Monitor, 
   ChevronRight, Star, Calendar, MessageCircle, Check, 
   Play, Headset, Volume2, Music2, Award, X, Plus, Zap, Layers, Disc2, Film, HeadphonesIcon, Music4
 } from 'lucide-react';
 
 const Services = () => {
-  const [activeService, setActiveService] = useState(null);
   const [activeFAQ, setActiveFAQ] = useState(null);
   const [showVideo, setShowVideo] = useState(false);
-  const [selectedPlan, setSelectedPlan] = useState(null);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   // Base price for one song/track
   const BASE_PRICE = 8000;
+
+  // Track scroll position for header effect
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const pricingPlans = [
     {
@@ -179,13 +186,17 @@ const Services = () => {
 
   return (
     <div className="bg-white text-gray-800 overflow-hidden">
-      {/* Navigation with Logo */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm py-4 px-6 flex justify-between items-center border-b border-gray-200">
+      {/* Enhanced Navigation with Scroll Effect */}
+      <nav className={`fixed top-0 left-0 right-0 z-50 py-4 px-6 flex justify-between items-center transition-all duration-300 ${
+        isScrolled 
+          ? 'bg-white/95 backdrop-blur-md shadow-md border-b border-gray-200' 
+          : 'bg-transparent'
+      }`}>
         <div className="flex items-center">
           <img 
             src="/images/logo.png" 
             alt="African Masters Studio Logo" 
-            className="h-12 w-auto"
+            className="h-12 w-auto transition-all duration-300"
           />
         </div>
         <div className="hidden md:flex items-center space-x-8">
@@ -196,45 +207,87 @@ const Services = () => {
         </div>
         <button 
           onClick={() => handleBooking("Contact")}
-          className="px-5 py-2.5 rounded-full bg-emerald-600 text-white font-medium hover:bg-emerald-700 transition-colors"
+          className={`px-5 py-2.5 rounded-full font-medium transition-all ${
+            isScrolled
+              ? "bg-emerald-600 text-white hover:bg-emerald-700"
+              : "bg-white/20 backdrop-blur-sm text-white border border-white/30 hover:bg-white/30"
+          }`}
         >
           Contact Us
         </button>
       </nav>
 
-      {/* Hero Section with Extended Curve */}
+      {/* Hero Section with Enhanced Background and Logo */}
       <section className="relative min-h-screen flex items-center justify-center pt-32">
-        {/* Green curved top - Extended */}
-        <div className="absolute top-0 left-0 w-full h-48 md:h-64 bg-gradient-to-r from-emerald-700 to-emerald-900 rounded-b-[100px] md:rounded-b-[150px] overflow-hidden z-0">
-          <div className="absolute top-0 left-0 w-20 h-20 rounded-full bg-emerald-500 opacity-20 -translate-x-10 -translate-y-10"></div>
-          <div className="absolute bottom-0 right-0 w-24 h-24 rounded-full bg-emerald-400 opacity-20 translate-x-12 translate-y-12"></div>
+        {/* Animated Background with Logo Pattern */}
+        <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/95 to-emerald-700/95 z-0 overflow-hidden">
+          {/* Subtle logo pattern in background */}
+          <div className="absolute inset-0 opacity-[0.03] bg-[url('/images/logo.png')] bg-[length:300px_300px] bg-center"></div>
+          
+          {/* Animated elements */}
+          <motion.div 
+            className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-emerald-600/20"
+            animate={{
+              scale: [1, 1.2, 1],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+          <motion.div 
+            className="absolute bottom-1/3 right-1/3 w-40 h-40 rounded-full bg-emerald-500/15"
+            animate={{
+              scale: [1, 1.5, 1],
+            }}
+            transition={{
+              duration: 12,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
         </div>
         
-        <div className="relative z-20 text-center px-6 max-w-4xl mx-auto mt-10">
+        <div className="relative z-20 text-center px-6 max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
+            {/* Prominent Logo */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2, duration: 0.8 }}
+              className="mb-8"
+            >
+              <img 
+                src="/images/logo.png" 
+                alt="African Masters Studio Logo" 
+                className="h-32 w-auto mx-auto drop-shadow-lg"
+              />
+            </motion.div>
+            
             <div className="inline-flex items-center bg-gradient-to-r from-emerald-700 to-emerald-900 text-white px-4 py-2 rounded-full text-sm font-medium tracking-wider mb-8">
               <div className="w-2 h-2 bg-white rounded-full mr-2 animate-pulse"></div>
               AFRICAN MASTERS STUDIO
             </div>
             
             <motion.h1 
-              className="text-4xl md:text-5xl font-bold mb-6"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.8 }}
+              transition={{ delay: 0.3, duration: 0.8 }}
             >
-              Elevate Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-emerald-400">African Sound</span>
+              Elevate Your <span className="text-emerald-300">African Sound</span>
             </motion.h1>
             
             <motion.p
-              className="text-xl text-gray-600 max-w-2xl mx-auto"
+              className="text-xl text-emerald-100 max-w-2xl mx-auto"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.3, duration: 0.8 }}
+              transition={{ delay: 0.4, duration: 0.8 }}
             >
               Professional audio solutions blending traditional African rhythms with modern production
             </motion.p>
@@ -242,20 +295,20 @@ const Services = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.8 }}
+              transition={{ delay: 0.6, duration: 0.8 }}
               className="mt-10 flex flex-wrap justify-center gap-4"
             >
               <a 
                 href="#pricing" 
-                className="px-8 py-3.5 rounded-full bg-gradient-to-r from-emerald-700 to-emerald-900 text-white font-medium flex items-center gap-2 shadow-lg hover:shadow-xl transition-all"
+                className="px-8 py-3.5 rounded-full bg-gradient-to-r from-white to-emerald-100 text-emerald-900 font-medium flex items-center gap-2 shadow-lg hover:shadow-xl transition-all"
               >
                 View Pricing
               </a>
               <button 
                 onClick={() => setShowVideo(true)}
-                className="px-8 py-3.5 rounded-full border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white transition-colors flex items-center gap-2"
+                className="px-8 py-3.5 rounded-full bg-transparent border-2 border-white text-white hover:bg-white/10 transition-colors flex items-center gap-2"
               >
-                <Play size={20} />
+                <Play size={20} className="fill-white" />
                 Studio session
               </button>
             </motion.div>
@@ -269,31 +322,55 @@ const Services = () => {
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5, duration: 0.8 }}
         >
-          <span className="mb-2 text-sm text-emerald-600">Discover Our Services</span>
+          <span className="mb-2 text-sm text-emerald-300">Discover Our Services</span>
           <motion.div 
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 1.5, repeat: Infinity }}
           >
-            <ChevronRight size={24} className="rotate-90 text-emerald-600" />
+            <ChevronRight size={24} className="rotate-90 text-emerald-300" />
           </motion.div>
         </motion.div>
+
+        {/* Wave Divider at Bottom */}
+        <div className="absolute bottom-0 left-0 w-full overflow-hidden">
+          <svg 
+            viewBox="0 0 1200 120" 
+            preserveAspectRatio="none" 
+            className="relative block w-full h-16 md:h-24"
+          >
+            <path 
+              d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" 
+              opacity=".25" 
+              className="fill-current text-emerald-800"
+            ></path>
+            <path 
+              d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" 
+              opacity=".5" 
+              className="fill-current text-emerald-700"
+            ></path>
+            <path 
+              d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" 
+              className="fill-current text-white"
+            ></path>
+          </svg>
+        </div>
       </section>
 
-      {/* Pricing Section - Upgraded with black borders */}
+      {/* Pricing Section - Enhanced with Floating Effect */}
       <section id="pricing" className="relative py-20 px-6 z-10 bg-white">
         <div className="max-w-7xl mx-auto">
           <motion.div 
             className="text-center mb-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
           >
             <div className="inline-block bg-gradient-to-r from-emerald-700 to-emerald-900 text-white px-4 py-1.5 rounded-full text-xs font-medium tracking-wider mb-6">
               TRANSPARENT PRICING
             </div>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Affordable<span className="text-emerald-600">Pricing Plans</span>
+              Affordable <span className="text-emerald-600">Pricing Plans</span>
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Professional services with clear pricing based on one song at KSh 8,000
@@ -306,7 +383,7 @@ const Services = () => {
                 key={i}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: "-50px" }}
                 transition={{ 
                   delay: i * 0.1, 
                   duration: 0.6,
@@ -314,14 +391,18 @@ const Services = () => {
                   stiffness: 100
                 }}
                 className={`relative rounded-xl overflow-hidden bg-white border ${plan.color} shadow-sm hover:shadow-lg transition-all group ${
-                  plan.highlight ? "ring-1 ring-emerald-500 ring-opacity-30 border-emerald-500" : "border-gray-300"
+                  plan.highlight ? "ring-2 ring-emerald-500 ring-opacity-50 border-emerald-500" : "border-gray-300"
                 }`}
                 whileHover={{ y: -10 }}
               >
                 {plan.popular && (
-                  <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-emerald-600 text-white text-xs font-bold px-4 py-1.5 rounded-full z-10">
+                  <motion.div 
+                    className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-emerald-600 text-white text-xs font-bold px-4 py-1.5 rounded-full z-10"
+                    animate={{ scale: [1, 1.05, 1] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  >
                     WITH DISCOUNT
-                  </div>
+                  </motion.div>
                 )}
                 
                 <div className="p-8 bg-white group-hover:bg-opacity-95 transition-all">
@@ -402,7 +483,7 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Equipment Showcase */}
+      {/* Equipment Showcase - Enhanced with Parallax */}
       <section id="equipment" className="relative py-20 px-6 z-10 bg-emerald-50">
         <div className="max-w-7xl mx-auto">
           <motion.div 
@@ -429,7 +510,7 @@ const Services = () => {
                 key={i}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: "-50px" }}
                 transition={{ 
                   delay: i * 0.1, 
                   duration: 0.6,
@@ -440,9 +521,10 @@ const Services = () => {
                 whileHover={{ scale: 1.03 }}
               >
                 <div className="relative h-48 overflow-hidden">
-                  <div 
-                    className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                  <motion.div 
+                    className="absolute inset-0 bg-cover bg-center"
                     style={{ backgroundImage: `url(${item.image})` }}
+                    whileHover={{ scale: 1.1 }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/50 to-transparent" />
                   <div className="absolute top-4 right-4 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-lg border border-gray-200">
@@ -467,7 +549,7 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Testimonials with Artist Images */}
+      {/* Testimonials with Enhanced Carousel */}
       <section id="testimonials" className="relative py-20 px-6 z-10 bg-white">
         <div className="max-w-7xl mx-auto">
           <motion.div 
@@ -494,21 +576,24 @@ const Services = () => {
                 key={i}
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: "-50px" }}
                 transition={{ 
                   delay: i * 0.1, 
                   duration: 0.6,
                   type: "spring",
                   stiffness: 100
                 }}
-                className="bg-white p-8 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-all"
+                className="bg-white p-8 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-all relative overflow-hidden"
                 whileHover={{ scale: 1.02 }}
               >
+                {/* Decorative element */}
+                <div className="absolute top-0 right-0 w-16 h-16 bg-emerald-500/10 rounded-bl-full" />
+                
                 <div className="flex mb-4">
                   {renderStars(testimonial.stars)}
                 </div>
-                <p className="text-gray-600 italic mb-6">"{testimonial.quote}"</p>
-                <div className="flex items-center">
+                <p className="text-gray-600 italic mb-6 relative z-10">"{testimonial.quote}"</p>
+                <div className="flex items-center relative z-10">
                   <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-emerald-600">
                     <img 
                       src={testimonial.avatar} 
@@ -527,7 +612,7 @@ const Services = () => {
         </div>
       </section>
 
-      {/* FAQ Section */}
+      {/* FAQ Section - Enhanced with Staggered Animation */}
       <section id="faq" className="relative py-20 px-6 z-10 bg-emerald-50">
         <div className="max-w-4xl mx-auto">
           <motion.div 
@@ -548,18 +633,25 @@ const Services = () => {
             </p>
           </motion.div>
           
-          <div className="space-y-4">
+          <motion.div 
+            className="space-y-4"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={{
+              visible: {
+                transition: {
+                  staggerChildren: 0.1
+                }
+              }
+            }}
+          >
             {faqs.map((faq, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ 
-                  delay: i * 0.1, 
-                  duration: 0.6,
-                  type: "spring",
-                  stiffness: 100
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  visible: { opacity: 1, y: 0 }
                 }}
                 className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all"
                 whileHover={{ y: -5 }}
@@ -586,16 +678,20 @@ const Services = () => {
                 )}
               </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Booking CTA */}
+      {/* Booking CTA - Enhanced with Gradient Animation */}
       <section id="booking" className="relative py-20 px-6 z-10">
         <div className="max-w-5xl mx-auto rounded-3xl overflow-hidden">
-          <div className="bg-gradient-to-br from-emerald-700 to-emerald-900 rounded-3xl p-8 md:p-12">
+          <div className="bg-gradient-to-br from-emerald-700 to-emerald-900 rounded-3xl p-8 md:p-12 relative overflow-hidden">
+            {/* Animated gradient elements */}
+            <div className="absolute -top-20 -left-20 w-64 h-64 rounded-full bg-emerald-600/20"></div>
+            <div className="absolute -bottom-20 -right-20 w-72 h-72 rounded-full bg-emerald-500/15"></div>
+            
             <motion.h2 
-              className="text-3xl md:text-4xl font-bold mb-6 text-white text-center"
+              className="text-3xl md:text-4xl font-bold mb-6 text-white text-center relative z-10"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -605,7 +701,7 @@ const Services = () => {
             </motion.h2>
             
             <motion.p 
-              className="text-white/90 text-xl mb-10 max-w-2xl mx-auto text-center"
+              className="text-white/90 text-xl mb-10 max-w-2xl mx-auto text-center relative z-10"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
@@ -619,7 +715,7 @@ const Services = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="flex flex-wrap justify-center gap-4"
+              className="flex flex-wrap justify-center gap-4 relative z-10"
             >
               <motion.button
                 onClick={() => handleBooking("Session")}
@@ -645,7 +741,7 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Video Modal */}
+      {/* Video Modal - Enhanced with Preview Thumbnail */}
       {showVideo && (
         <motion.div 
           className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90"

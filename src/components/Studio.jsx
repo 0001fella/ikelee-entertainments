@@ -97,7 +97,7 @@ export default function Studio() {
     { img: "https://images.unsplash.com/photo-1546435770-a3e426bf472b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1465&q=80", title: "Vocal Booth" },
     { img: "https://images.unsplash.com/photo-1510915361894-db8b60106cb1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80", title: "Gear Rack" },
     { img: "https://images.unsplash.com/photo-1552422535-c45813c61732?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80", title: "Mixing Desk" },
-    { img: "https://images.unsplash.com/photo-1580745294528-8bd528d729d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80", title: "Instrument Collection" }
+    { img: '/images/book.jpg', title: "" }
   ];
 
   // Testimonials with actual images
@@ -118,7 +118,7 @@ export default function Studio() {
     },
     {
       name: "Elijah Jalogo",
-      role: "Benga Artist",
+      role: "Gospel Rhumba",
       quote: "Recording my latest album here was a game-changer. The acoustics and equipment quality are world-class.",
       rating: 5,
       avatar: "/images/jalogo.jpg"
@@ -409,7 +409,7 @@ Message: ${formData.message}`;
               transition={{ duration: 0.8 }}
             >
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-                African <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-amber-400">Sonic Excellence</span> in Nairobi
+                Ikelee <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-amber-400">Entertainments</span> in Nairobi
               </h1>
               <p className="text-xl text-gray-600 mb-8 max-w-2xl">
                 Premier recording studio blending traditional African rhythms with modern production techniques
@@ -662,7 +662,7 @@ Message: ${formData.message}`;
                 ))}
               </div>
               <button className="mt-8 w-full py-3.5 rounded-xl bg-white text-amber-800 font-semibold hover:bg-gray-100 transition-all flex items-center justify-center group">
-                DOWNLOAD FULL GEAR LIST
+                
                 <motion.div 
                   className="ml-2"
                   animate={{ x: [0, 4, 0] }}
@@ -777,7 +777,7 @@ Message: ${formData.message}`;
                 <MapPin size={24} className="text-white mr-4 mt-1 flex-shrink-0" />
                 <div>
                   <h3 className="font-bold text-lg mb-1">Location</h3>
-                  <p>Westlands, Nairobi, Kenya</p>
+                  <p>Lucky Summer, Nairobi, Kenya</p>
                 </div>
               </div>
               
@@ -883,7 +883,7 @@ Message: ${formData.message}`;
                 type="submit"
                 className="w-full py-3.5 rounded-lg bg-gradient-to-r from-amber-700 to-amber-900 text-white font-semibold hover:from-amber-800 hover:to-amber-950 transition-all flex items-center justify-center"
               >
-                <span>BOOK VIA WHATSAPP</span>
+                <span> WHATSAPP</span>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-6 h-6 ml-2 fill-current">
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                 </svg>

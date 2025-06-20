@@ -62,21 +62,21 @@ const services = [
 const testimonials = [
   {
     id: 1,
-    name: "Alex M.",
+    name: "Amiso Thwango.",
     role: "Musician",
     content: "The recording quality at African Masters Studio is unmatched. My tracks came out sounding professional and radio-ready!",
     rating: 5
   },
   {
     id: 2,
-    name: "Sarah K.",
-    role: "Producer",
+    name: "Uncle Eddiy",
+    role: "Artist",
     content: "Their mixing engineers have an incredible ear for detail. They transformed my rough mixes into polished gems.",
     rating: 5
   },
   {
     id: 3,
-    name: "David T.",
+    name: "Elija J..",
     role: "Artist",
     content: "The video production team helped bring my creative vision to life. The final music video exceeded my expectations!",
     rating: 4
@@ -125,7 +125,7 @@ export default function Booking() {
     email: '',
     phone: '',
     bookingType: 'yourself',
-    numberOfPeople: 1,
+    number: 1,
     plannedDate: '',
     plannedTime: '',
     duration: 2,
@@ -600,7 +600,7 @@ END:VCALENDAR`;
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3, duration: 0.8 }}
             >
-              Book studio time at Africa's premier recording facility. Professional engineers, state-of-the-art equipment, and an inspiring creative environment.
+              Book studio time at African Masters Studio. Professional engineers, state-of-the-art equipment, and an inspiring creative environment.
             </motion.p>
             <motion.button
               className="px-8 py-4 rounded-xl font-bold text-white bg-gradient-to-r from-emerald-600 to-emerald-800 shadow-lg shadow-emerald-200 hover:shadow-emerald-300 transition-all"
@@ -744,11 +744,11 @@ END:VCALENDAR`;
                     <div className="text-center p-4">
                       <MapPin size={32} className="mx-auto text-emerald-500 mb-2" />
                       <p className="font-semibold text-gray-800">African Masters Studio</p>
-                      <p className="text-gray-600">123 Creative Lane, Nairobi</p>
+                      <p className="text-gray-600">nyali breeze apartments lucky summer</p>
                     </div>
                   </div>
                   <p className="text-gray-600 mb-2">
-                    <span className="font-medium text-gray-700">Address:</span> 123 Creative Lane, Nairobi, Kenya
+                    <span className="font-medium text-gray-700">Address:</span> nyali breeze apartments lucky summer, Nairobi, Kenya
                   </p>
                   <p className="text-gray-600 mb-2">
                     <span className="font-medium text-gray-700">Hours:</span> Mon-Sat: 9AM - 10PM
@@ -791,7 +791,7 @@ END:VCALENDAR`;
                     transition={{ duration: 0.3 }}
                   >
                     <h2 className="text-3xl font-bold mb-6 text-gray-900">
-                      Choose Your <span className="text-emerald-600">Creative Service</span>
+                      Choose Your <span className="text-emerald-600"> Service</span>
                     </h2>
                     
                     <div className="grid md:grid-cols-2 gap-6 mb-8">

@@ -44,7 +44,7 @@ export default function Navbar() {
     { name: 'STUDIO', path: '/studio' },
     { name: 'SERVICES', path: '/services' },
     { name: 'PORTFOLIO', path: '/portfolio' },
-    { name: 'FAQS', path: '/faqs' }, // ✅ Updated to match route
+    { name: 'FAQS', path: '/faqs' },
     { name: 'CONTACT', path: '/contact' },
   ];
 
@@ -62,11 +62,13 @@ export default function Navbar() {
                  'bg-white dark:bg-gray-900 py-3'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          {/* Logo */}
+          {/* Logo with favicon */}
           <Link to="/" className="flex items-center group">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-amber-600 to-orange-500 flex items-center justify-center mr-3 transition-transform group-hover:rotate-6">
-              <Music className="text-white" size={20} />
-            </div>
+            <img
+              src="/images/favicon.jpg"
+              alt="Favicon"
+              className="w-10 h-10 rounded-full mr-3 object-cover border border-amber-500 shadow"
+            />
             <div className="hidden sm:block">
               <span className="text-lg font-bold bg-gradient-to-r from-amber-700 to-orange-600 bg-clip-text text-transparent">
                 IKELEE ENTERTAINMENTS

@@ -196,7 +196,7 @@ const About = () => {
             className="text-center md:text-left"
           >
             <div className="inline-flex items-center bg-white text-amber-800 px-4 py-2 rounded-full text-sm font-bold tracking-wider mb-8">
-              AFRICA'S PREMIER STUDIO
+              KENYA'S PREMIER STUDIO
             </div>
             
             <motion.h1 
@@ -205,7 +205,7 @@ const About = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
             >
-              Crafting <span className="block">African Sonic Excellence</span>
+              Crafting <span className="block">Africa With Sonic Excellence</span>
             </motion.h1>
             
             <motion.p 
@@ -346,7 +346,7 @@ const About = () => {
                 Artists <span className="text-amber-600">Testimonials</span>
               </h2>
               <p className="text-gray-600 max-w-2xl mx-auto">
-                Hear what African artists and producers say about working with us
+                Hear what kenyan artists and producers say about working with us
               </p>
             </motion.div>
           </div>
@@ -458,7 +458,7 @@ const About = () => {
           
           <div className="text-center mt-12">
             <a href="#" className="inline-flex items-center text-amber-600 font-bold text-lg">
-              Follow us on Instagram
+              Follow us 
               <ChevronRight size={20} className="ml-2" />
             </a>
           </div>
@@ -516,7 +516,7 @@ const About = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Book a session today and experience professional African music production at its finest
+            Book a session today and experience professional Ikelee music production at its finest
           </motion.p>
           
           <motion.div

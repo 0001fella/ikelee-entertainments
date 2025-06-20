@@ -11,19 +11,19 @@ import {
 const projects = [
   {
     id: 1,
-    title: 'Savannah Groove Session',
+    title: 'Studio session Session',
     type: 'Studio Recording',
     category: 'audio',
     thumbnail: '/images/welcome.mp4',
     media: '/images/welcome.mp4',
-    description: 'Capturing the raw talent of emerging Afrobeat artists',
+    description: 'Capturing the raw talent of emerging artists',
     tags: ['Afrobeat', 'Audio Engineering', 'Mixing'],
-    stats: { duration: '3:45', date: 'Oct 2023' },
+    stats: { duration: '3:45', date: 'june 2025' },
     fullDescription: 'An immersive recording session featuring traditional African instruments blended with contemporary production techniques. Our team captured the authentic sounds of the Savannah region using state-of-the-art equipment and acoustic treatment.'
   },
   {
     id: 2,
-    title: 'Desert Storm Music Video',
+    title: 'videography and photoshot session',
     type: 'Music Video',
     category: 'video',
     thumbnail: '/images/season.mp4',
@@ -31,11 +31,11 @@ const projects = [
     description: 'Vibrant visuals celebrating African rhythms',
     tags: ['Cinematography', 'Color Grading', 'Drone Shots'],
     stats: { duration: '4:22', date: 'Sep 2023' },
-    fullDescription: 'A cinematic journey through the Sahara desert featuring traditional Tuareg musicians. Shot on RED Komodo with custom color grading to enhance the golden hour visuals. Drone footage captured the vastness of the desert landscape.'
+    fullDescription: 'A cinematic journey with the  musicians. Shot on RED Komodo with custom color grading to enhance the golden hour visuals. Drone footage captured the vastness of the desert landscape.'
   },
   {
     id: 3,
-    title: 'Amapiano Nights Live',
+    title: 'production in progress',
     type: 'Event',
     category: 'event',
     thumbnail: '/images/new.jpg',
@@ -43,7 +43,7 @@ const projects = [
     description: 'Electrifying stage performance captured',
     tags: ['Live Sound', 'Multi-Cam', 'Lighting Design'],
     stats: { duration: '15:30', date: 'Aug 2023' },
-    fullDescription: 'A multi-camera live production of Johannesburg\'s hottest Amapiano event. Our team managed stage lighting, sound reinforcement, and live streaming for this 5,000-attendee event.'
+    fullDescription: ' carefull and accurate mixing  and perfect production with the oist skilled engineers. Our team managed stage lighting, sound reinforcement, and live streaming for this 5,000-attendee event.'
   },
   {
     id: 4,
@@ -54,19 +54,19 @@ const projects = [
     media: '/images/book.jpg',
     description: 'Stunning photography of African heritage',
     tags: ['Portrait Photography', 'Lighting', 'Set Design'],
-    stats: { duration: '32 images', date: 'Jul 2023' },
+    stats: { duration: '32 images', date: 'Jul 2025' },
     fullDescription: 'Album artwork photography for Grammy-nominated artist Kofi Mensah. Shot in our custom-built studio with unique lighting setups to highlight traditional Ghanaian Kente cloth patterns.'
   },
   {
     id: 5,
-    title: 'Afro Fusion Podcast',
+    title: ' Fusion Podcast',
     type: 'Audio Production',
     category: 'audio',
     thumbnail: '/images/home.jpg',
     media: '/audio/podcast.mp3',
     description: 'Conversations with African music pioneers',
     tags: ['Audio Editing', 'Sound Design', 'Mixing'],
-    stats: { duration: '58:12', date: 'Jun 2023' },
+    stats: { duration: '58:12', date: 'Jun 2025' },
     fullDescription: 'A 12-episode podcast series featuring interviews with legendary African musicians. We handled recording, editing, sound design, and mastering for this award-winning series.'
   },
   {
@@ -76,9 +76,9 @@ const projects = [
     category: 'photo',
     thumbnail: '/images/season1.jpg',
     media: '/images/season1.jpg',
-    description: 'Iconic album artwork for Nigerian legends',
+    description: 'Iconic album artwork for  legends',
     tags: ['Concept Art', 'Set Design', 'Post-Production'],
-    stats: { duration: '24 images', date: 'May 2023' },
+    stats: { duration: '24 images', date: 'May 2025' },
     fullDescription: 'Photography series for the "Legends of Highlife" tribute album. We created custom sets inspired by 1970s Lagos nightlife and used vintage lenses for authentic period looks.'
   },
 ];
@@ -296,7 +296,7 @@ const ProjectDetail = ({ project, onClose }) => {
                       </div>
                       <div>
                         <h5 className="font-medium text-gray-900">Team</h5>
-                        <p className="text-sm text-gray-600">3 engineers, 2 producers, 1 cinematographer</p>
+                        <p className="text-sm text-gray-600">1 mobilizer, 1producers, 1 cinematographer</p>
                       </div>
                     </div>
                   </div>
@@ -451,7 +451,7 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <h3 className="font-bold text-lg">Studio Location</h3>
-                  <p className="text-green-200">123 Creative Lane, Nairobi, Kenya</p>
+                  <p className="text-green-200">nyali breeze apartments lucky summer, Nairobi, Kenya</p>
                 </div>
               </div>
               
@@ -730,7 +730,7 @@ export default function Portfolio() {
                 transition={{ delay: 0.2 }}
               >
                 <Sparkles size={16} className="mr-2" />
-                AFRICAN CREATIVE EXCELLENCE
+                AFRICAN MASTERS STUDIO
               </motion.span>
             </div>
             
@@ -799,7 +799,7 @@ export default function Portfolio() {
                   onClick={showMoreProjects}
                   whileTap={{ scale: 0.95 }}
                 >
-                  Load More Projects
+                  
                 </motion.button>
               </div>
             )}
@@ -847,7 +847,7 @@ export default function Portfolio() {
                 {
                   quote: "The attention to detail in our album cover shoot was phenomenal. They created visuals that truly represent African musical heritage.",
                   author: "Amina Diallo",
-                  role: "Artist Manager"
+                  role: "Photographer"
                 },
                 {
                   quote: "Working with African Masters on our documentary was transformative. Their cultural sensitivity elevated our project.",
@@ -909,7 +909,7 @@ export default function Portfolio() {
           </div>
           
           <div className="text-gray-500 text-sm">
-            &copy; {new Date().getFullYear()} African Masters Studio. All rights reserved.
+            &copy; {new Date().getFullYear()} .
           </div>
         </div>
       </footer>

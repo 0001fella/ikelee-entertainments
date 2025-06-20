@@ -154,8 +154,8 @@ const AfricanMastersStudio = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            Elevate Your Sound with <span className="text-amber-600">African</span> <br /> 
-            <span className="text-amber-400">Mastery</span>
+            Elevate Your Sound with <span className="text-amber-600">Ekelee</span> <br /> 
+            <span className="text-amber-400">Entertainments</span>
           </motion.h2>
           <motion.p 
             className="text-gray-600 max-w-2xl mx-auto text-lg"

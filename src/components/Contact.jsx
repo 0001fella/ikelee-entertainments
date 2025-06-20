@@ -332,7 +332,7 @@ export default function Contact() {
                       </div>
                       <div>
                         <h4 className="text-gray-600 font-medium">Studio Location</h4>
-                        <p className="text-gray-800 font-medium">123 Music Avenue, Creative District</p>
+                        <p className="text-gray-800 font-medium">nyali breeze apartments lucky summer</p>
                         <p className="text-gray-600">Nairobi, Kenya</p>
                       </div>
                     </div>
@@ -533,7 +533,7 @@ export default function Contact() {
                 </div>
                 <h3 className="text-xl font-bold ml-3 text-gray-800">Studio Location</h3>
               </div>
-              <p className="text-gray-600 mb-6">Visit our state-of-the-art facility in Nairobi's creative district.</p>
+              <p className="text-gray-600 mb-6">Visit our state-of-the-art facility in Nairobi- nyali breeze apartments lucky summer.</p>
             </div>
             
             <div className="h-80 bg-gradient-to-br from-green-50 to-white relative overflow-hidden flex items-center justify-center">
@@ -542,8 +542,8 @@ export default function Contact() {
                   <MapPin className="text-white" size={24} />
                 </div>
                 <h4 className="text-gray-800 font-semibold text-lg mb-2">African Masters Studio</h4>
-                <p className="text-gray-600">123 Music Avenue</p>
-                <p className="text-gray-600">Creative District, Nairobi</p>
+                <p className="text-gray-600">nyali breeze apartments</p>
+                <p className="text-gray-600">lucky summer, Nairobi</p>
                 <p className="text-green-600 mt-3 font-medium">Open today until 10 PM</p>
               </div>
               

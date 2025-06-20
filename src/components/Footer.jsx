@@ -37,7 +37,7 @@ export default function Footer() {
             <div className="bg-gradient-to-r from-emerald-600 to-emerald-800 p-1 rounded-lg">
               <div className="bg-black p-2 rounded-md">
                 <h2 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-emerald-300">
-                  IKELE STUDIOS
+                  IKELEE ENTERTAINMENTS
                 </h2>
               </div>
             </div>
@@ -160,7 +160,7 @@ export default function Footer() {
               <div className="bg-gray-800 p-2 rounded-lg mr-3">
                 <MapPin size={18} className="text-emerald-500" />
               </div>
-              <span className="text-gray-300">123 Creative Lane, Nairobi, Kenya</span>
+              <span className="text-gray-300">nyali breeze apartments lucky summer</span>
             </div>
             <div className="flex items-center">
               <div className="bg-gray-800 p-2 rounded-lg mr-3">

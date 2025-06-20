@@ -5,4 +5,4 @@ User-agent: *
 Allow: /
 
 # Point to your sitemap
-Sitemap: https://IkeleEntertainments.vercel.app//sitemap.xml
+Sitemap: https://IkeleEntertainments.netlify.app//sitemap.xml

@@ -195,7 +195,7 @@ const Services = () => {
           >
             <div className="inline-flex items-center bg-gradient-to-r from-amber-700 to-amber-900 text-white px-4 py-2 rounded-full text-sm font-medium tracking-wider mb-8">
               <div className="w-2 h-2 bg-white rounded-full mr-2 animate-pulse"></div>
-              AFRICAN MUSIC PRODUCTION
+              AFRICAN MASTERS STUDIO
             </div>
             
             <motion.h1 
@@ -233,7 +233,7 @@ const Services = () => {
                 className="px-8 py-3.5 rounded-full border-2 border-amber-600 text-amber-600 hover:bg-amber-600 hover:text-white transition-colors flex items-center gap-2"
               >
                 <Play size={20} />
-                Studio Tour
+                Studio session
               </button>
             </motion.div>
           </motion.div>
@@ -270,7 +270,7 @@ const Services = () => {
               TRANSPARENT PRICING
             </div>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Simple <span className="text-amber-600">Pricing Plans</span>
+              Affordable<span className="text-amber-600">Pricing Plans</span>
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Professional services with clear pricing based on one song at KSh 8,000
@@ -297,7 +297,7 @@ const Services = () => {
               >
                 {plan.popular && (
                   <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-amber-600 text-white text-xs font-bold px-4 py-1.5 rounded-full z-10">
-                    MOST POPULAR
+                    WITH DISCOUNT
                   </div>
                 )}
                 
@@ -461,7 +461,7 @@ const Services = () => {
               What <span className="text-amber-600">Our Artists Say</span>
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Hear from African artists who have experienced our premium studio services
+              Hear from Knyan artists who have experienced our premium studio services
             </p>
           </motion.div>
           

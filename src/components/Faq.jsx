@@ -69,7 +69,7 @@ export default function Faq() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 text-gray-800 relative overflow-hidden">
       <Helmet>
-        <title>FAQs | Ikele Studios</title>
+        <title>EKELEE ENTERTAINMENTS</title>
         <meta name="description" content="Frequently Asked Questions about booking, services, and studio policies at Ikele Studios." />
         <style>{`
           @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
@@ -329,7 +329,7 @@ export default function Faq() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-lg text-gray-900 mb-1">Studio Location</h3>
-                      <p className="text-gray-600">123 Creative Lane, Nairobi, Kenya</p>
+                      <p className="text-gray-600">Nyali Breeze apartments Lucky Summer, Nairobi, Kenya</p>
                     </div>
                   </div>
                   

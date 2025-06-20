@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   ChevronRight, Star, Calendar, MessageCircle, Check, 
   Play, Headset, Volume2, Music2, Award, X, Plus, Zap, Layers, Disc2, Film, HeadphonesIcon, Music4
@@ -9,6 +9,7 @@ const Services = () => {
   const [activeFAQ, setActiveFAQ] = useState(null);
   const [showVideo, setShowVideo] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const videoRef = useRef(null);
 
   // Base price for one song/track
   const BASE_PRICE = 8000;
@@ -21,6 +22,12 @@ const Services = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (showVideo && videoRef.current) {
+      videoRef.current.play();
+    }
+  }, [showVideo]);
 
   const pricingPlans = [
     {
@@ -186,184 +193,143 @@ const Services = () => {
 
   return (
     <div className="bg-white text-gray-800 overflow-hidden">
-      {/* Enhanced Navigation with Scroll Effect */}
-      <nav className={`fixed top-0 left-0 right-0 z-50 py-4 px-6 flex justify-between items-center transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-white/95 backdrop-blur-md shadow-md border-b border-gray-200' 
-          : 'bg-transparent'
-      }`}>
-        <div className="flex items-center">
-          <img 
-            src="/images/logo.png" 
-            alt="African Masters Studio Logo" 
-            className="h-12 w-auto transition-all duration-300"
-          />
+      {/* Floating Navigation */}
+      <motion.div 
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          isScrolled ? 'py-3 bg-white shadow-md' : 'py-5 bg-transparent'
+        }`}
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
+          <div className="flex items-center">
+            <div className="bg-gradient-to-r from-emerald-600 to-emerald-800 w-10 h-10 rounded-lg flex items-center justify-center text-white font-bold">
+              AM
+            </div>
+            <span className="ml-2 font-bold text-xl text-gray-800">AFRICAN MASTERS</span>
+          </div>
+          <div className="hidden md:flex space-x-8">
+            <a href="/" className="font-medium text-gray-600 hover:text-emerald-600 transition">Home</a>
+            <a href="#pricing" className="font-medium text-gray-600 hover:text-emerald-600 transition">Pricing</a>
+            <a href="#equipment" className="font-medium text-gray-600 hover:text-emerald-600 transition">Equipment</a>
+            <a href="#testimonials" className="font-medium text-gray-600 hover:text-emerald-600 transition">Testimonials</a>
+            <a href="#faq" className="font-medium text-emerald-600">FAQ</a>
+          </div>
+          <button 
+            onClick={() => handleBooking("Contact")}
+            className="px-5 py-2.5 rounded-lg bg-gradient-to-r from-emerald-600 to-emerald-800 text-white font-medium shadow-lg shadow-emerald-100 hover:shadow-emerald-200 transition-all"
+          >
+            Contact Us
+          </button>
         </div>
-        <div className="hidden md:flex items-center space-x-8">
-          <a href="#pricing" className="text-gray-700 hover:text-emerald-600 transition-colors font-medium">Pricing</a>
-          <a href="#equipment" className="text-gray-700 hover:text-emerald-600 transition-colors font-medium">Equipment</a>
-          <a href="#testimonials" className="text-gray-700 hover:text-emerald-600 transition-colors font-medium">Testimonials</a>
-          <a href="#faq" className="text-gray-700 hover:text-emerald-600 transition-colors font-medium">FAQ</a>
-        </div>
-        <button 
-          onClick={() => handleBooking("Contact")}
-          className={`px-5 py-2.5 rounded-full font-medium transition-all ${
-            isScrolled
-              ? "bg-emerald-600 text-white hover:bg-emerald-700"
-              : "bg-white/20 backdrop-blur-sm text-white border border-white/30 hover:bg-white/30"
-          }`}
-        >
-          Contact Us
-        </button>
-      </nav>
+      </motion.div>
 
-      {/* Hero Section with Enhanced Background and Logo */}
-      <section className="relative min-h-screen flex items-center justify-center pt-32">
-        {/* Animated Background with Logo Pattern */}
-        <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/95 to-emerald-700/95 z-0 overflow-hidden">
-          {/* Subtle logo pattern in background */}
-          <div className="absolute inset-0 opacity-[0.03] bg-[url('/images/logo.png')] bg-[length:300px_300px] bg-center"></div>
+      {/* Hero Section - Redesigned to match booking page */}
+      <div className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-emerald-500/5 to-emerald-800/10"></div>
+          <div className="absolute top-0 left-0 w-full h-full bg-[url('https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&q=80&w=2940')] bg-cover bg-center opacity-10"></div>
           
-          {/* Animated elements */}
-          <motion.div 
-            className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-emerald-600/20"
-            animate={{
-              scale: [1, 1.2, 1],
-            }}
-            transition={{
-              duration: 8,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          />
-          <motion.div 
-            className="absolute bottom-1/3 right-1/3 w-40 h-40 rounded-full bg-emerald-500/15"
-            animate={{
-              scale: [1, 1.5, 1],
-            }}
-            transition={{
-              duration: 12,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }}
-          />
+          {/* Decorative elements */}
+          <div className="absolute top-20 left-10 w-64 h-64 rounded-full bg-emerald-400 opacity-10 blur-3xl"></div>
+          <div className="absolute bottom-10 right-20 w-80 h-80 rounded-full bg-emerald-600 opacity-10 blur-3xl"></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full border border-emerald-200 opacity-10"></div>
         </div>
         
-        <div className="relative z-20 text-center px-6 max-w-4xl mx-auto">
-          <motion.div
+        <div className="relative z-10 max-w-6xl mx-auto px-6">
+          <motion.div 
+            className="text-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            {/* Prominent Logo */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.2, duration: 0.8 }}
-              className="mb-8"
-            >
-              <img 
-                src="/images/logo.png" 
-                alt="African Masters Studio Logo" 
-                className="h-32 w-auto mx-auto drop-shadow-lg"
-              />
-            </motion.div>
-            
-            <div className="inline-flex items-center bg-gradient-to-r from-emerald-700 to-emerald-900 text-white px-4 py-2 rounded-full text-sm font-medium tracking-wider mb-8">
-              <div className="w-2 h-2 bg-white rounded-full mr-2 animate-pulse"></div>
-              AFRICAN MASTERS STUDIO
-            </div>
-            
             <motion.h1 
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-white"
+              className="text-4xl md:text-6xl font-bold mb-4 text-gray-900 leading-tight"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.8 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
             >
-              Elevate Your <span className="text-emerald-300">African Sound</span>
+              Elevate Your <span className="bg-gradient-to-r from-emerald-600 to-emerald-800 bg-clip-text text-transparent">African Sound</span>
             </motion.h1>
-            
-            <motion.p
-              className="text-xl text-emerald-100 max-w-2xl mx-auto"
+            <motion.p 
+              className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto mb-10"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.4, duration: 0.8 }}
+              transition={{ delay: 0.3, duration: 0.8 }}
             >
-              Professional audio solutions blending traditional African rhythms with modern production
+              Professional audio solutions blending traditional African rhythms with modern production techniques.
             </motion.p>
-            
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.8 }}
-              className="mt-10 flex flex-wrap justify-center gap-4"
+              transition={{ delay: 0.4, duration: 0.8 }}
+              className="flex flex-wrap justify-center gap-4"
             >
               <a 
                 href="#pricing" 
-                className="px-8 py-3.5 rounded-full bg-gradient-to-r from-white to-emerald-100 text-emerald-900 font-medium flex items-center gap-2 shadow-lg hover:shadow-xl transition-all"
+                className="px-8 py-3.5 rounded-full bg-gradient-to-r from-emerald-600 to-emerald-800 text-white font-medium flex items-center gap-2 shadow-lg hover:shadow-xl transition-all"
               >
                 View Pricing
               </a>
               <button 
                 onClick={() => setShowVideo(true)}
-                className="px-8 py-3.5 rounded-full bg-transparent border-2 border-white text-white hover:bg-white/10 transition-colors flex items-center gap-2"
+                className="px-8 py-3.5 rounded-full border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white transition-colors flex items-center gap-2"
               >
-                <Play size={20} className="fill-white" />
-                Studio session
+                <Play size={20} />
+                Studio Tour
               </button>
             </motion.div>
           </motion.div>
         </div>
-        
-        {/* Scrolling indicator */}
-        <motion.div 
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5, duration: 0.8 }}
-        >
-          <span className="mb-2 text-sm text-emerald-300">Discover Our Services</span>
-          <motion.div 
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-          >
-            <ChevronRight size={24} className="rotate-90 text-emerald-300" />
-          </motion.div>
-        </motion.div>
+      </div>
 
-        {/* Wave Divider at Bottom */}
-        <div className="absolute bottom-0 left-0 w-full overflow-hidden">
-          <svg 
-            viewBox="0 0 1200 120" 
-            preserveAspectRatio="none" 
-            className="relative block w-full h-16 md:h-24"
-          >
-            <path 
-              d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" 
-              opacity=".25" 
-              className="fill-current text-emerald-800"
-            ></path>
-            <path 
-              d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" 
-              opacity=".5" 
-              className="fill-current text-emerald-700"
-            ></path>
-            <path 
-              d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" 
-              className="fill-current text-white"
-            ></path>
-          </svg>
+      {/* Studio Features */}
+      <section className="relative z-10 py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="flex flex-col items-center mb-16">
+            <div className="inline-block bg-gradient-to-r from-emerald-600 to-emerald-800 text-white text-xs font-semibold py-1.5 px-4 rounded-full mb-4 tracking-wider">
+              PREMIUM STUDIO EXPERIENCE
+            </div>
+            <h2 className="text-3xl font-bold text-center text-gray-900">
+              Why <span className="text-emerald-600">African Masters Studio</span>
+            </h2>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              { icon: <Disc2 size={32} />, title: "State-of-the-art Equipment", description: "Industry-leading gear for pristine sound" },
+              { icon: <Volume2 size={32} />, title: "Acoustically Treated Rooms", description: "Optimal sound environment for recording" },
+              { icon: <Calendar size={32} />, title: "Flexible Booking Options", description: "24/7 availability to fit your schedule" },
+              { icon: <Music4 size={32} />, title: "Traditional African Instruments", description: "Authentic sounds for cultural expression" }
+            ].map((feature, index) => (
+              <motion.div
+                key={index}
+                className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200 hover:shadow-md transition-all"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <div className="bg-gradient-to-br from-emerald-600 to-emerald-800 p-3 rounded-xl w-14 h-14 flex items-center justify-center text-white mb-6">
+                  {feature.icon}
+                </div>
+                <h3 className="font-bold text-lg mb-3 text-gray-900">{feature.title}</h3>
+                <p className="text-gray-600">{feature.description}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Pricing Section - Enhanced with Floating Effect */}
-      <section id="pricing" className="relative py-20 px-6 z-10 bg-white">
+      {/* Pricing Section */}
+      <section id="pricing" className="relative py-16 px-4 md:py-20 md:px-6 z-10 bg-white">
         <div className="max-w-7xl mx-auto">
           <motion.div 
             className="text-center mb-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
             <div className="inline-block bg-gradient-to-r from-emerald-700 to-emerald-900 text-white px-4 py-1.5 rounded-full text-xs font-medium tracking-wider mb-6">
@@ -377,7 +343,7 @@ const Services = () => {
             </p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {pricingPlans.map((plan, i) => (
               <motion.div
                 key={i}
@@ -393,7 +359,11 @@ const Services = () => {
                 className={`relative rounded-xl overflow-hidden bg-white border ${plan.color} shadow-sm hover:shadow-lg transition-all group ${
                   plan.highlight ? "ring-2 ring-emerald-500 ring-opacity-50 border-emerald-500" : "border-gray-300"
                 }`}
-                whileHover={{ y: -10 }}
+                whileHover={{ 
+                  y: -10,
+                  borderColor: "#059669",
+                  boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+                }}
               >
                 {plan.popular && (
                   <motion.div 
@@ -450,13 +420,18 @@ const Services = () => {
                     onClick={() => handleBooking(plan.title)}
                     className={`w-full px-6 py-3 rounded-lg font-medium transition-all ${
                       plan.highlight 
-                        ? "bg-gradient-to-r from-emerald-700 to-emerald-900 text-white hover:from-emerald-800 hover:to-emerald-900"
-                        : "bg-black text-white hover:bg-gray-900"
+                        ? "bg-gradient-to-r from-emerald-600 to-emerald-800 text-white hover:from-emerald-700 hover:to-emerald-900"
+                        : "bg-black text-white hover:bg-gray-800"
                     }`}
-                    whileHover={{ scale: 1.03 }}
+                    whileHover={{ 
+                      scale: 1.03,
+                      background: plan.highlight 
+                        ? "linear-gradient(to right, #047857, #065f46)"
+                        : "#111827"
+                    }}
                     whileTap={{ scale: 0.97 }}
                   >
-                    {plan.price === "Custom" ? "Get Custom Quote" : "Book Now"}
+                    {plan.price === "Custom" ? "Get Quote" : "Book Now"}
                   </motion.button>
                 </div>
               </motion.div>
@@ -483,8 +458,8 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Equipment Showcase - Enhanced with Parallax */}
-      <section id="equipment" className="relative py-20 px-6 z-10 bg-emerald-50">
+      {/* Equipment Showcase */}
+      <section id="equipment" className="relative py-16 px-4 md:py-20 md:px-6 z-10 bg-emerald-50">
         <div className="max-w-7xl mx-auto">
           <motion.div 
             className="text-center mb-16"
@@ -549,8 +524,8 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Testimonials with Enhanced Carousel */}
-      <section id="testimonials" className="relative py-20 px-6 z-10 bg-white">
+      {/* Testimonials */}
+      <section id="testimonials" className="relative py-16 px-4 md:py-20 md:px-6 z-10 bg-white">
         <div className="max-w-7xl mx-auto">
           <motion.div 
             className="text-center mb-16"
@@ -570,7 +545,7 @@ const Services = () => {
             </p>
           </motion.div>
           
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-6">
             {testimonials.map((testimonial, i) => (
               <motion.div
                 key={i}
@@ -583,12 +558,9 @@ const Services = () => {
                   type: "spring",
                   stiffness: 100
                 }}
-                className="bg-white p-8 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-all relative overflow-hidden"
+                className="bg-white p-6 md:p-8 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-all relative overflow-hidden"
                 whileHover={{ scale: 1.02 }}
               >
-                {/* Decorative element */}
-                <div className="absolute top-0 right-0 w-16 h-16 bg-emerald-500/10 rounded-bl-full" />
-                
                 <div className="flex mb-4">
                   {renderStars(testimonial.stars)}
                 </div>
@@ -612,8 +584,8 @@ const Services = () => {
         </div>
       </section>
 
-      {/* FAQ Section - Enhanced with Staggered Animation */}
-      <section id="faq" className="relative py-20 px-6 z-10 bg-emerald-50">
+      {/* FAQ Section */}
+      <section id="faq" className="relative py-16 px-4 md:py-20 md:px-6 z-10 bg-emerald-50">
         <div className="max-w-4xl mx-auto">
           <motion.div 
             className="text-center mb-16"
@@ -682,14 +654,10 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Booking CTA - Enhanced with Gradient Animation */}
-      <section id="booking" className="relative py-20 px-6 z-10">
+      {/* Booking CTA */}
+      <section id="booking" className="relative py-16 px-4 md:py-20 md:px-6 z-10">
         <div className="max-w-5xl mx-auto rounded-3xl overflow-hidden">
           <div className="bg-gradient-to-br from-emerald-700 to-emerald-900 rounded-3xl p-8 md:p-12 relative overflow-hidden">
-            {/* Animated gradient elements */}
-            <div className="absolute -top-20 -left-20 w-64 h-64 rounded-full bg-emerald-600/20"></div>
-            <div className="absolute -bottom-20 -right-20 w-72 h-72 rounded-full bg-emerald-500/15"></div>
-            
             <motion.h2 
               className="text-3xl md:text-4xl font-bold mb-6 text-white text-center relative z-10"
               initial={{ opacity: 0, y: 20 }}
@@ -719,7 +687,7 @@ const Services = () => {
             >
               <motion.button
                 onClick={() => handleBooking("Session")}
-                className="px-8 py-4 rounded-lg bg-white text-emerald-700 font-semibold hover:bg-gray-100 transition-all flex items-center gap-2"
+                className="px-6 py-3 md:px-8 md:py-4 rounded-lg bg-white text-emerald-700 font-semibold hover:bg-gray-100 transition-all flex items-center gap-2"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.97 }}
               >
@@ -729,7 +697,7 @@ const Services = () => {
               
               <motion.button
                 onClick={() => handleBooking("Contact")}
-                className="px-8 py-4 rounded-lg border-2 border-white text-white hover:bg-white/10 transition-colors flex items-center gap-2"
+                className="px-6 py-3 md:px-8 md:py-4 rounded-lg border-2 border-white text-white hover:bg-white/10 transition-colors flex items-center gap-2"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.97 }}
               >
@@ -741,40 +709,45 @@ const Services = () => {
         </div>
       </section>
 
-      {/* Video Modal - Enhanced with Preview Thumbnail */}
-      {showVideo && (
-        <motion.div 
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-        >
+      {/* Updated Video Modal */}
+      <AnimatePresence>
+        {showVideo && (
           <motion.div 
-            className="relative w-full max-w-4xl bg-white rounded-xl overflow-hidden"
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.9, opacity: 0 }}
-            transition={{ type: "spring", damping: 25 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setShowVideo(false)}
           >
-            <button 
-              className="absolute top-4 right-4 text-gray-700 hover:text-emerald-600 transition-colors z-10 bg-white rounded-full p-2"
-              onClick={() => setShowVideo(false)}
+            <motion.div 
+              className="relative w-full max-w-4xl bg-black rounded-xl overflow-hidden"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ type: "spring", damping: 25 }}
+              onClick={(e) => e.stopPropagation()}
             >
-              <X size={24} />
-            </button>
-            
-            <div className="aspect-video bg-gray-900 flex items-center justify-center">
-              <div className="text-center">
-                <div className="w-16 h-16 rounded-full bg-emerald-600 flex items-center justify-center mx-auto mb-6">
-                  <Play size={32} className="text-white ml-1" />
-                </div>
-                <h3 className="text-xl font-bold text-white">African Masters Studio Tour</h3>
-                <p className="text-white/70 mt-2">Experience our authentic African music facilities</p>
+              <button 
+                className="absolute top-4 right-4 text-white hover:text-emerald-400 transition-colors z-10 bg-black/50 rounded-full p-2"
+                onClick={() => setShowVideo(false)}
+              >
+                <X size={24} />
+              </button>
+              
+              <div className="aspect-video bg-black flex items-center justify-center">
+                <video 
+                  ref={videoRef}
+                  controls
+                  className="w-full h-full object-contain"
+                  src="/images/welcome.mp4"
+                >
+                  Your browser does not support the video tag.
+                </video>
               </div>
-            </div>
+            </motion.div>
           </motion.div>
-        </motion.div>
-      )}
+        )}
+      </AnimatePresence>
     </div>
   );
 };

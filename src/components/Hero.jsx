@@ -67,7 +67,7 @@ const AfricanMastersStudio = () => {
       image: '/images/prince.jpg'
     },
     {
-      name: "Amiso Twamgo",
+      name: "Amiso Thwango",
       genre: "Ohangla • Benga",
       image: '/images/Amiso.jpg'
     },

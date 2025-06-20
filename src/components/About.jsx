@@ -18,7 +18,7 @@ const features = [
     icon: <Disc size={40} />, 
     title: "Mixing & Mastering", 
     description: "Industry-standard tools for polished, radio-ready tracks",
-    color: "from-amber-500 to-amber-700"
+    color: "from-green-500 to-green-700" // Changed to green
   },
   {
     icon: <Music size={40} />, 
@@ -30,7 +30,7 @@ const features = [
     icon: <Video size={40} />, 
     title: "Music Videos", 
     description: "Cinematic visual storytelling for your music",
-    color: "from-amber-500 to-amber-700"
+    color: "from-green-500 to-green-700" // Changed to green
   },
   {
     icon: <Radio size={40} />, 
@@ -42,7 +42,7 @@ const features = [
     icon: <Camera size={40} />, 
     title: "Photography", 
     description: "High-quality artist photos and album artwork",
-    color: "from-amber-500 to-amber-700"
+    color: "from-green-500 to-green-700" // Changed to green
   }
 ];
 
@@ -181,6 +181,25 @@ const About = () => {
 
   return (
     <div className="bg-white text-gray-800 font-sans overflow-x-hidden">
+      {/* Floating Logo */}
+      <motion.div 
+        className="fixed top-6 left-6 z-50"
+        animate={{
+          y: [0, -10, 0],
+        }}
+        transition={{
+          duration: 3,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      >
+        <img 
+          src="/images/logo.png" 
+          alt="African Masters Logo" 
+          className="w-16 h-16 object-contain"
+        />
+      </motion.div>
+
       {/* Hero Section - Updated with video in circular container */}
       <section className="relative py-16 md:py-24 flex items-center overflow-hidden bg-gradient-to-br from-amber-700 to-amber-900">
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
@@ -205,7 +224,7 @@ const About = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
             >
-              Crafting <span className="block">Africa With Sonic Excellence</span>
+              Crafting <span className="block">Africa With <span className="text-green-400">Sonic Excellence</span></span>
             </motion.h1>
             
             <motion.p 
@@ -260,14 +279,14 @@ const About = () => {
             <div className="absolute -bottom-6 -right-6 w-32 h-32 rounded-full overflow-hidden border-4 border-white shadow-xl">
               <div className="bg-gray-200 border-2 border-dashed rounded-xl w-full h-full" />
             </div>
-            <div className="absolute -top-6 -left-6 w-24 h-24 rounded-full bg-amber-500 flex items-center justify-center shadow-xl">
+            <div className="absolute -top-6 -left-6 w-24 h-24 rounded-full bg-green-500 flex items-center justify-center shadow-xl">
               <Music2 size={40} className="text-white" />
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Stats Section */}
+      {/* Stats Section with green accents */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -280,7 +299,9 @@ const About = () => {
                 transition={{ delay: index * 0.1, duration: 0.5 }}
                 className="text-center"
               >
-                <div className="text-4xl md:text-5xl font-bold mb-2 text-amber-600">{stat.value}</div>
+                <div className={`text-4xl md:text-5xl font-bold mb-2 ${
+                  index % 2 === 0 ? "text-amber-600" : "text-green-600"
+                }`}>{stat.value}</div>
                 <div className="text-gray-600 text-lg">{stat.label}</div>
               </motion.div>
             ))}
@@ -300,7 +321,7 @@ const About = () => {
               transition={{ duration: 0.6 }}
             >
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Studio <span className="text-amber-600">Capabilities</span>
+                Studio <span className="text-green-600">Capabilities</span>
               </h2>
               <p className="text-gray-600 max-w-2xl mx-auto">
                 Professional-grade equipment and acoustically treated spaces for authentic African sound production
@@ -317,6 +338,10 @@ const About = () => {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 0.6 }}
                 className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100"
+                whileHover={{ 
+                  y: -10,
+                  boxShadow: "0 15px 30px rgba(0, 0, 0, 0.15)"
+                }}
               >
                 <div className="h-full p-8 flex flex-col">
                   <div className={`w-20 h-20 flex items-center justify-center rounded-full mb-6 bg-gradient-to-br ${feature.color} text-white`}>
@@ -343,7 +368,7 @@ const About = () => {
               transition={{ duration: 0.6 }}
             >
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Artists <span className="text-amber-600">Testimonials</span>
+                Artists <span className="text-green-600">Testimonials</span>
               </h2>
               <p className="text-gray-600 max-w-2xl mx-auto">
                 Hear what kenyan artists and producers say about working with us
@@ -353,7 +378,7 @@ const About = () => {
           
           <div className="relative">
             <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 relative">
-              <div className="absolute top-0 left-0 w-20 h-20 bg-gradient-to-br from-amber-500 to-amber-700 rounded-br-full text-white flex items-center justify-center">
+              <div className="absolute top-0 left-0 w-20 h-20 bg-gradient-to-br from-green-500 to-green-700 rounded-br-full text-white flex items-center justify-center">
                 <QuoteIcon />
               </div>
               
@@ -368,31 +393,35 @@ const About = () => {
                     <div className="bg-gray-200 border-2 border-dashed rounded-xl w-full h-full" />
                   </div>
                   <h4 className="text-xl font-bold">{testimonials[currentTestimonialIndex].name}</h4>
-                  <p className="text-amber-600">{testimonials[currentTestimonialIndex].role}</p>
+                  <p className="text-green-600 font-medium">{testimonials[currentTestimonialIndex].role}</p>
                 </div>
               </div>
             </div>
             
             <div className="flex justify-center mt-8 gap-4">
-              <button 
+              <motion.button 
                 onClick={prevTestimonials}
-                className="w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center hover:bg-amber-50 transition-colors"
+                className="w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center hover:bg-green-50 transition-colors"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
               >
-                <ChevronLeft className="text-amber-600" />
-              </button>
-              <button 
+                <ChevronLeft className="text-green-600" />
+              </motion.button>
+              <motion.button 
                 onClick={nextTestimonials}
-                className="w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center hover:bg-amber-50 transition-colors"
+                className="w-12 h-12 rounded-full bg-white shadow-md flex items-center justify-center hover:bg-green-50 transition-colors"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
               >
-                <ChevronRight className="text-amber-600" />
-              </button>
+                <ChevronRight className="text-green-600" />
+              </motion.button>
             </div>
           </div>
         </div>
         
         {/* Decorative elements */}
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 rounded-full bg-gradient-to-br from-amber-500 to-amber-700 opacity-10 blur-3xl"></div>
-        <div className="absolute -top-40 -right-40 w-80 h-80 rounded-full bg-gradient-to-br from-amber-700 to-amber-900 opacity-10 blur-3xl"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 rounded-full bg-gradient-to-br from-green-500 to-green-700 opacity-10 blur-3xl"></div>
+        <div className="absolute -top-40 -right-40 w-80 h-80 rounded-full bg-gradient-to-br from-green-700 to-green-900 opacity-10 blur-3xl"></div>
       </section>
 
       {/* Behind the Scenes - Updated with actual images */}
@@ -429,6 +458,7 @@ const About = () => {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 0.5 }}
                 onClick={() => post.video && openVideo(post.video)}
+                whileHover={{ scale: 1.03 }}
               >
                 <div className="relative aspect-square">
                   <img 
@@ -438,9 +468,19 @@ const About = () => {
                   />
                   {post.video && (
                     <div className="absolute inset-0 bg-black/30 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                      <div className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+                      <motion.div 
+                        className="w-14 h-14 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center"
+                        animate={{
+                          scale: [1, 1.1, 1],
+                        }}
+                        transition={{
+                          duration: 1.5,
+                          repeat: Infinity,
+                          ease: "easeInOut"
+                        }}
+                      >
                         <Play className="text-white" size={24} />
-                      </div>
+                      </motion.div>
                     </div>
                   )}
                   <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
@@ -457,7 +497,7 @@ const About = () => {
           </div>
           
           <div className="text-center mt-12">
-            <a href="#" className="inline-flex items-center text-amber-600 font-bold text-lg">
+            <a href="#" className="inline-flex items-center text-green-600 font-bold text-lg hover:text-green-700 transition-colors">
               Follow us 
               <ChevronRight size={20} className="ml-2" />
             </a>
@@ -482,6 +522,10 @@ const About = () => {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1, duration: 0.5 }}
                 className="opacity-70 hover:opacity-100 transition-opacity"
+                whileHover={{ 
+                  scale: 1.1,
+                  transition: { duration: 0.3 }
+                }}
               >
                 <div className="h-12 w-32 bg-gray-200 border-2 border-dashed rounded-xl" />
               </motion.div>
@@ -490,8 +534,8 @@ const About = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 md:py-24 px-4 md:px-8 relative bg-gradient-to-br from-amber-700 to-amber-900 text-white overflow-hidden">
+      {/* CTA Section with green theme */}
+      <section className="py-16 md:py-24 px-4 md:px-8 relative bg-gradient-to-br from-green-700 to-green-900 text-white overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
           <div className="absolute -top-20 -left-20 w-64 h-64 bg-white/10 rounded-full"></div>
           <div className="absolute -bottom-20 -right-20 w-64 h-64 bg-white/10 rounded-full"></div>
@@ -526,24 +570,71 @@ const About = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="flex flex-wrap justify-center gap-4"
           >
-            <Link 
-              to="/booking" 
-              className="px-8 py-4 rounded-full bg-white text-amber-800 font-bold hover:bg-amber-50 transition-all shadow-lg flex items-center gap-2"
+            <motion.a 
+              href="/booking" 
+              className="px-8 py-4 rounded-full bg-white text-green-800 font-bold hover:bg-amber-50 transition-all shadow-lg flex items-center gap-2"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              animate={{
+                boxShadow: [
+                  "0 4px 6px rgba(0, 0, 0, 0.1)",
+                  "0 10px 15px rgba(0, 0, 0, 0.2)",
+                  "0 4px 6px rgba(0, 0, 0, 0.1)"
+                ]
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
             >
               <Calendar size={20} />
               BOOK A SESSION
-            </Link>
+            </motion.a>
             
-            <Link 
-              to="/contact" 
+            <motion.a 
+              href="/contact" 
               className="px-8 py-4 rounded-full border-2 border-white text-white hover:bg-white/10 transition-colors flex items-center gap-2"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               <MessageCircle size={20} />
               CONTACT US
-            </Link>
+            </motion.a>
           </motion.div>
         </div>
       </section>
+
+      {/* Footer with logo */}
+      <footer className="py-12 bg-gray-900 text-white">
+        <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+          <div className="mb-6 md:mb-0 flex items-center">
+            <motion.div
+              whileHover={{ rotate: 5 }}
+              className="mr-4"
+            >
+              <img 
+                src="/images/logo.png" 
+                alt="African Masters Logo" 
+                className="w-14 h-14"
+              />
+            </motion.div>
+            <div>
+              <h3 className="text-xl font-bold text-green-400">AFRICAN MASTERS STUDIO</h3>
+              <p className="text-gray-400 text-sm mt-1">Elevating African Music Worldwide</p>
+            </div>
+          </div>
+          <div className="flex space-x-6">
+            <a href="#" className="text-gray-400 hover:text-green-300 transition">Services</a>
+            <a href="#" className="text-gray-400 hover:text-green-300 transition">Artists</a>
+            <a href="#" className="text-gray-400 hover:text-green-300 transition">Events</a>
+            <a href="/contact" className="text-gray-400 hover:text-green-300 transition">Contact</a>
+          </div>
+        </div>
+        <div className="max-w-7xl mx-auto px-4 mt-8 pt-8 border-t border-gray-800 text-center text-gray-500 text-sm">
+          © {new Date().getFullYear()} African Masters Studio. All rights reserved.
+        </div>
+      </footer>
 
       {/* Video Modal */}
       <AnimatePresence>
@@ -562,7 +653,7 @@ const About = () => {
               transition={{ type: "spring", damping: 25 }}
             >
               <button 
-                className="absolute -top-12 right-0 text-white hover:text-amber-300 transition-colors"
+                className="absolute -top-12 right-0 text-white hover:text-green-300 transition-colors"
                 onClick={() => setShowVideoModal(false)}
               >
                 <X size={32} />

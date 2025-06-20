@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaCalendarAlt, FaMapMarkerAlt, FaMicrophoneAlt, FaSlidersH, FaDrum, FaUsers, FaVideo, FaMusic } from 'react-icons/fa';
 
@@ -24,6 +24,18 @@ const hoverScale = {
 };
 
 const AfricanMastersStudio = () => {
+  // State for scroll position for parallax effect
+  const [scrollY, setScrollY] = useState(0);
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   // YouTube video IDs for the artists
   const productions = [
     {
@@ -44,8 +56,7 @@ const AfricanMastersStudio = () => {
     {
       id: "uncle-eddie",
       title: "Uncle Eddie - Latest",
-      videoId: "sNwaurU2Kn4" // Example video ID, replace with actual
-
+      videoId: "sNwaurU2Kn4"
     }
   ];
 
@@ -78,19 +89,38 @@ const AfricanMastersStudio = () => {
     {
       name: "Uncle Eddy",
       genre: "Traditional Fusion",
-      image: '/images/uncle.jpg' // Add this image to your public/images
+      image: '/images/uncle.jpg'
     }
   ];
 
   return (
     <div className="min-h-screen bg-white font-sans text-gray-800 overflow-x-hidden">
-      {/* Top Curved Section with animations */}
+      {/* Top Curved Section with animations and logo */}
       <motion.div 
         className="relative bg-gradient-to-r from-amber-700 to-amber-900 h-32 md:h-48 rounded-b-[60px] md:rounded-b-[100px] overflow-hidden"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
       >
+        {/* Floating Logo Animation */}
+        <motion.div 
+          className="absolute top-4 left-4 md:left-8 z-10"
+          animate={{
+            y: [0, -5, 0],
+          }}
+          transition={{
+            duration: 3,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        >
+          <img 
+            src="/images/logo.png" 
+            alt="African Masters Logo" 
+            className="w-12 h-12 md:w-16 md:h-16 object-contain"
+          />
+        </motion.div>
+        
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-white text-center px-4">
             <motion.h1 
@@ -140,7 +170,7 @@ const AfricanMastersStudio = () => {
         ></motion.div>
       </motion.div>
 
-      {/* Hero Section */}
+      {/* Hero Section with green accents */}
       <section className="py-16 px-4 md:px-8 max-w-6xl mx-auto">
         <motion.div 
           className="text-center mb-16"
@@ -154,7 +184,7 @@ const AfricanMastersStudio = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            Elevate Your Sound with <span className="text-amber-600">Ekelee</span> <br /> 
+            Elevate Your Sound with <span className="text-green-600">Ekelee</span> <br /> 
             <span className="text-amber-400">Entertainments</span>
           </motion.h2>
           <motion.p 
@@ -180,12 +210,13 @@ const AfricanMastersStudio = () => {
               whileHover={hoverScale}
             >
               <img 
-                src="/images/ikele.jpg" 
+                src="/images/logo.png" 
                 alt="African Masters Studio" 
                 className="w-full h-80 object-cover"
               />
+              {/* Green badge */}
               <motion.div 
-                className="absolute top-4 left-4 bg-amber-500 text-white px-3 py-1 rounded-full font-semibold text-xs"
+                className="absolute top-4 left-4 bg-green-500 text-white px-3 py-1 rounded-full font-semibold text-xs"
                 animate={{ 
                   scale: [1, 1.05, 1],
                   opacity: [1, 0.8, 1]
@@ -201,7 +232,7 @@ const AfricanMastersStudio = () => {
             </motion.div>
           </motion.div>
           
-          {/* Studio Equipment section */}
+          {/* Studio Equipment section with green accents */}
           <motion.div 
             className="w-full md:w-1/2 max-w-md"
             initial={{ opacity: 0, x: 20 }}
@@ -217,7 +248,7 @@ const AfricanMastersStudio = () => {
                 animate="show"
               >
                 <motion.div className="flex items-start" variants={item}>
-                  <div className="bg-amber-100 text-amber-800 rounded-lg p-3 mr-4">
+                  <div className="bg-green-100 text-green-800 rounded-lg p-3 mr-4">
                     <FaMicrophoneAlt size={24} />
                   </div>
                   <div>
@@ -229,7 +260,7 @@ const AfricanMastersStudio = () => {
                 </motion.div>
                 
                 <motion.div className="flex items-start" variants={item}>
-                  <div className="bg-amber-100 text-amber-800 rounded-lg p-3 mr-4">
+                  <div className="bg-green-100 text-green-800 rounded-lg p-3 mr-4">
                     <FaSlidersH size={24} />
                   </div>
                   <div>
@@ -241,7 +272,7 @@ const AfricanMastersStudio = () => {
                 </motion.div>
 
                 <motion.div className="flex items-start" variants={item}>
-                  <div className="bg-amber-100 text-amber-800 rounded-lg p-3 mr-4">
+                  <div className="bg-green-100 text-green-800 rounded-lg p-3 mr-4">
                     <FaDrum size={24} />
                   </div>
                   <div>
@@ -257,7 +288,7 @@ const AfricanMastersStudio = () => {
         </div>
       </section>
 
-      {/* Features Section */}
+      {/* Features Section with green accent */}
       <section className="py-16 bg-amber-50">
         <div className="max-w-6xl mx-auto px-4">
           <motion.div 
@@ -322,13 +353,13 @@ const AfricanMastersStudio = () => {
               </div>
             </motion.div>
             
-            {/* Feature Card 3 */}
+            {/* Feature Card 3 with green theme */}
             <motion.div 
               className="bg-white rounded-2xl overflow-hidden shadow-lg"
               variants={item}
               whileHover={hoverScale}
             >
-              <div className="h-48 bg-gradient-to-r from-amber-500 to-amber-600 flex items-center justify-center">
+              <div className="h-48 bg-gradient-to-r from-green-500 to-green-700 flex items-center justify-center">
                 <motion.div 
                   className="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16 rounded-full"
                   animate={{ rotate: 360 }}
@@ -346,7 +377,7 @@ const AfricanMastersStudio = () => {
         </div>
       </section>
 
-      {/* Services Section */}
+      {/* Services Section with green accents */}
       <section className="py-16 bg-white">
         <div className="max-w-6xl mx-auto px-4">
           <motion.div 
@@ -374,7 +405,7 @@ const AfricanMastersStudio = () => {
               variants={item}
               whileHover={hoverScale}
             >
-              <div className="w-16 h-16 rounded-full bg-amber-100 flex items-center justify-center text-amber-600 mb-6">
+              <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center text-green-600 mb-6">
                 <FaMicrophoneAlt size={24} />
               </div>
               <h3 className="text-xl font-bold mb-3 text-gray-800">Professional Recording</h3>
@@ -396,13 +427,13 @@ const AfricanMastersStudio = () => {
                 Expert audio engineering to polish your tracks to perfection for any platform.
               </p>
             </motion.div>
-            
+
             <motion.div 
               className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100"
               variants={item}
               whileHover={hoverScale}
             >
-              <div className="w-16 h-16 rounded-full bg-amber-100 flex items-center justify-center text-amber-600 mb-6">
+              <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center text-green-600 mb-6">
                 <FaDrum size={24} />
               </div>
               <h3 className="text-xl font-bold mb-3 text-gray-800">Beat Production</h3>
@@ -430,7 +461,7 @@ const AfricanMastersStudio = () => {
               variants={item}
               whileHover={hoverScale}
             >
-              <div className="w-16 h-16 rounded-full bg-amber-100 flex items-center justify-center text-amber-600 mb-6">
+              <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center text-green-600 mb-6">
                 <FaVideo size={24} />
               </div>
               <h3 className="text-xl font-bold mb-3 text-gray-800">Music Videos</h3>
@@ -508,7 +539,7 @@ const AfricanMastersStudio = () => {
         </div>
       </section>
 
-      {/* Artist Spotlight */}
+      {/* Artist Spotlight with green accent */}
       <section className="py-16 max-w-6xl mx-auto px-4">
         <motion.div 
           className="text-center mb-16"
@@ -552,10 +583,10 @@ const AfricanMastersStudio = () => {
               </div>
               {index === 0 && (
                 <motion.div 
-                  className="absolute top-4 right-4 bg-amber-500 text-white px-3 py-1 rounded-full text-sm font-bold z-20"
+                  className="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-bold z-20"
                   animate={{ 
                     scale: [1, 1.1, 1],
-                    backgroundColor: ["#F59E0B", "#D97706", "#F59E0B"]
+                    backgroundColor: ["#16a34a", "#22c55e", "#16a34a"]
                   }}
                   transition={{ 
                     duration: 2,
@@ -571,9 +602,9 @@ const AfricanMastersStudio = () => {
         </motion.div>
       </section>
 
-      {/* Bottom CTA */}
+      {/* Bottom CTA with green theme */}
       <motion.div 
-        className="py-16 bg-gradient-to-r from-amber-700 to-amber-900 rounded-t-[60px] md:rounded-t-[100px]"
+        className="py-16 bg-gradient-to-r from-green-700 to-green-900 rounded-t-[60px] md:rounded-t-[100px]"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
@@ -588,7 +619,7 @@ const AfricanMastersStudio = () => {
             Ready to Create Your Masterpiece?
           </motion.h2>
           <motion.p 
-            className="text-amber-100 max-w-2xl mx-auto mb-8 text-lg"
+            className="text-green-100 max-w-2xl mx-auto mb-8 text-lg"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.6 }}
@@ -603,9 +634,21 @@ const AfricanMastersStudio = () => {
           >
             <motion.a 
               href="/booking" 
-              className="bg-white text-amber-800 px-8 py-4 rounded-xl font-bold hover:bg-gray-100 transition duration-300 shadow-lg"
+              className="bg-white text-green-800 px-8 py-4 rounded-xl font-bold hover:bg-gray-100 transition duration-300 shadow-lg"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              animate={{
+                boxShadow: [
+                  "0 4px 6px rgba(0, 0, 0, 0.1)",
+                  "0 10px 15px rgba(0, 0, 0, 0.2)",
+                  "0 4px 6px rgba(0, 0, 0, 0.1)"
+                ]
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
             >
               Book Studio Time
             </motion.a>
@@ -621,12 +664,24 @@ const AfricanMastersStudio = () => {
         </div>
       </motion.div>
 
-      {/* Footer */}
+      {/* Footer with logo */}
       <footer className="py-8 bg-gray-900 text-white">
         <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
-          <div className="mb-4 md:mb-0">
-            <h3 className="text-xl font-bold text-amber-400">AFRICAN MASTERS STUDIO</h3>
-            <p className="text-gray-400 text-sm mt-1">Elevating African Music Worldwide</p>
+          <div className="mb-4 md:mb-0 flex items-center">
+            <motion.div
+              whileHover={{ rotate: 5 }}
+              className="mr-3"
+            >
+              <img 
+                src="/images/logo.png" 
+                alt="African Masters Logo" 
+                className="w-10 h-10"
+              />
+            </motion.div>
+            <div>
+              <h3 className="text-xl font-bold text-amber-400">AFRICAN MASTERS STUDIO</h3>
+              <p className="text-gray-400 text-sm mt-1">Elevating African Music Worldwide</p>
+            </div>
           </div>
           <div className="flex space-x-6">
             <a href="#" className="text-gray-400 hover:text-white transition">Services</a>

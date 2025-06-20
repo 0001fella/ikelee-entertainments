@@ -65,7 +65,7 @@ export default function Navbar() {
           {/* Logo with favicon */}
           <Link to="/" className="flex items-center group">
             <img
-              src="/images/favicon.jpg"
+              src="/images/logo.png"
               alt="Favicon"
               className="w-10 h-10 rounded-full mr-3 object-cover border border-amber-500 shadow"
             />

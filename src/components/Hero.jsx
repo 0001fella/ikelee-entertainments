@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FaCalendarAlt, FaMapMarkerAlt, FaMicrophoneAlt, FaSlidersH, FaDrum, FaUsers, FaVideo, FaMusic } from 'react-icons/fa';
+import { 
+  FaCalendarAlt, FaMapMarkerAlt, FaMicrophoneAlt, FaSlidersH, 
+  FaDrum, FaUsers, FaVideo, FaMusic, FaPhoneAlt, FaEnvelope,
+  FaFacebook, FaTwitter, FaInstagram, FaYoutube
+} from 'react-icons/fa';
 
 // Animation variants
 const container = {
@@ -24,7 +28,6 @@ const hoverScale = {
 };
 
 const AfricanMastersStudio = () => {
-  // State for scroll position for parallax effect
   const [scrollY, setScrollY] = useState(0);
   
   useEffect(() => {
@@ -36,7 +39,6 @@ const AfricanMastersStudio = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // YouTube video IDs for the artists
   const productions = [
     {
       id: "prince-indah",
@@ -95,9 +97,45 @@ const AfricanMastersStudio = () => {
 
   return (
     <div className="min-h-screen bg-white font-sans text-gray-800 overflow-x-hidden">
+      {/* Top Contact Bar */}
+      <motion.div 
+        className="bg-amber-900 text-white py-2 text-sm"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4 }}
+      >
+        <div className="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center">
+          <div className="flex flex-wrap justify-center gap-4 mb-2 sm:mb-0">
+            <span className="flex items-center gap-2">
+              <FaMapMarkerAlt /> Nairobi, Kenya
+            </span>
+            <a href="tel:+254123456789" className="flex items-center gap-2">
+              <FaPhoneAlt /> +254 123 456 789
+            </a>
+            <a href="mailto:info@africanmasters.com" className="flex items-center gap-2">
+              <FaEnvelope /> info@africanmasters.com
+            </a>
+          </div>
+          <div className="flex space-x-4">
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <FaFacebook className="text-white hover:text-amber-300 transition duration-300" size={16} />
+            </a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+              <FaTwitter className="text-white hover:text-amber-300 transition duration-300" size={16} />
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <FaInstagram className="text-white hover:text-amber-300 transition duration-300" size={16} />
+            </a>
+            <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+              <FaYoutube className="text-white hover:text-amber-300 transition duration-300" size={16} />
+            </a>
+          </div>
+        </div>
+      </motion.div>
+
       {/* Top Curved Section with animations and logo */}
       <motion.div 
-        className="relative bg-gradient-to-r from-amber-700 to-amber-900 h-32 md:h-48 rounded-b-[60px] md:rounded-b-[100px] overflow-hidden"
+        className="relative bg-gradient-to-r from-amber-700 to-amber-900 h-40 md:h-56 rounded-b-[60px] md:rounded-b-[100px] overflow-hidden"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}

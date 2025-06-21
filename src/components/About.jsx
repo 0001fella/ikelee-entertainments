@@ -48,7 +48,7 @@ const features = [
 
 const testimonials = [
   {
-    name: "Amiso Thango",
+    name: "Amiso Thwango",
     role: "Ohangla Artist",
     quote: "The production quality at African Masters Studio elevated my sound to international standards.",
     stars: 5

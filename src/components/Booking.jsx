@@ -134,6 +134,15 @@ export default function Booking() {
     selectedEquipment: []
   });
 
+  // State for form errors
+  const [formErrors, setFormErrors] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    plannedDate: '',
+    plannedTime: ''
+  });
+
   const [selectedService, setSelectedService] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
@@ -163,9 +172,40 @@ export default function Booking() {
     }
   }, [showSuccess]);
 
+  // Email validation function - must end with @gmail.com
+  const validateEmail = (email) => {
+    if (!email) return true; // Email is optional
+    return email.toLowerCase().endsWith('@gmail.com');
+  };
+
+  // Phone validation function - must be at least 10 digits
+  const validatePhone = (phone) => {
+    // Remove non-digit characters
+    const digitsOnly = phone.replace(/\D/g, '');
+    return digitsOnly.length >= 10;
+  };
+
+  const validateForm = () => {
+    const errors = {
+      name: !form.name ? 'Name is required' : '',
+      email: form.email && !validateEmail(form.email) ? 'Must be a valid Gmail address (ending with @gmail.com)' : '',
+      phone: !form.phone ? 'Phone number is required' : !validatePhone(form.phone) ? 'Phone number must have at least 10 digits' : '',
+      plannedDate: !form.plannedDate ? 'Date is required' : '',
+      plannedTime: !form.plannedTime ? 'Time is required' : ''
+    };
+
+    setFormErrors(errors);
+    return Object.values(errors).every(error => error === '');
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
+    
+    // Clear error when user types
+    if (formErrors[name]) {
+      setFormErrors(prev => ({ ...prev, [name]: '' }));
+    }
   };
 
   const handleServiceSelect = (service) => {
@@ -211,8 +251,9 @@ Please respond to this booking request as soon as possible.`;
     setIsSubmitting(true);
 
     try {
-      if (!form.name || !form.phone || !form.plannedDate || !form.plannedTime) {
-        throw new Error('Please fill all required fields');
+      // Validate form before submission
+      if (!validateForm()) {
+        throw new Error('Please correct the form errors');
       }
 
       const message = generateWhatsappMessage();
@@ -247,8 +288,24 @@ Please respond to this booking request as soon as possible.`;
 
   const nextStep = () => {
     if (currentStep < 3) {
-      setCurrentStep(currentStep + 1);
-      window.scrollTo({ top: formRef.current.offsetTop - 100, behavior: 'smooth' });
+      // Validate before moving to next step
+      let valid = true;
+      
+      if (currentStep === 1) {
+        if (!form.plannedDate || !form.plannedTime) {
+          setFormErrors(prev => ({
+            ...prev,
+            plannedDate: !form.plannedDate ? 'Date is required' : '',
+            plannedTime: !form.plannedTime ? 'Time is required' : ''
+          }));
+          valid = false;
+        }
+      }
+      
+      if (valid) {
+        setCurrentStep(currentStep + 1);
+        window.scrollTo({ top: formRef.current.offsetTop - 100, behavior: 'smooth' });
+      }
     }
   };
 
@@ -696,7 +753,7 @@ END:VCALENDAR`;
                       }}
                       className="text-sm text-emerald-600 hover:text-emerald-500 mt-2 flex items-center"
                       aria-label="Change service"
-                    >
+                      >
                       Change service <ChevronRight size={16} className="ml-1" />
                     </button>
                   </div>
@@ -858,9 +915,14 @@ END:VCALENDAR`;
                             onChange={handleChange}
                             required
                             min={new Date().toISOString().split('T')[0]}
-                            className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 bg-white text-gray-800 focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+                            className={`w-full pl-10 pr-4 py-3 rounded-xl border ${
+                              formErrors.plannedDate ? 'border-red-500' : 'border-gray-300'
+                            } bg-white text-gray-800 focus:ring-2 focus:ring-emerald-500 focus:outline-none`}
                             aria-label="Select date"
                           />
+                          {formErrors.plannedDate && (
+                            <p className="text-red-500 text-sm mt-1">{formErrors.plannedDate}</p>
+                          )}
                         </div>
                       </div>
                       
@@ -965,6 +1027,9 @@ END:VCALENDAR`;
                           </button>
                         ))}
                       </div>
+                      {formErrors.plannedTime && (
+                        <p className="text-red-500 text-sm mt-1">{formErrors.plannedTime}</p>
+                      )}
                     </div>
                     
                     <div className="mb-6">
@@ -1060,10 +1125,15 @@ END:VCALENDAR`;
                           value={form.name}
                           onChange={handleChange}
                           required
-                          className="w-full px-4 py-3 rounded-xl border border-gray-300 bg-white text-gray-800 focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+                          className={`w-full px-4 py-3 rounded-xl border ${
+                            formErrors.name ? 'border-red-500' : 'border-gray-300'
+                          } bg-white text-gray-800 focus:ring-2 focus:ring-emerald-500 focus:outline-none`}
                           placeholder="Your name"
                           aria-label="Full name"
                         />
+                        {formErrors.name && (
+                          <p className="text-red-500 text-sm mt-1">{formErrors.name}</p>
+                        )}
                       </div>
 
                       <div>
@@ -1073,10 +1143,22 @@ END:VCALENDAR`;
                           name="email"
                           value={form.email}
                           onChange={handleChange}
-                          className="w-full px-4 py-3 rounded-xl border border-gray-300 bg-white text-gray-800 focus:ring-2 focus:ring-emerald-500 focus:outline-none"
-                          placeholder="your@email.com"
+                          className={`w-full px-4 py-3 rounded-xl border ${
+                            formErrors.email ? 'border-red-500' : 'border-gray-300'
+                          } bg-white text-gray-800 focus:ring-2 focus:ring-emerald-500 focus:outline-none`}
+                          placeholder="your@gmail.com"
                           aria-label="Email address"
                         />
+                        {formErrors.email && (
+                          <p className="text-red-500 text-sm mt-1">{formErrors.email}</p>
+                        )}
+                        {!formErrors.email && form.email && (
+                          <p className="text-sm text-gray-500 mt-1">
+                            {validateEmail(form.email) 
+                              ? <span className="text-emerald-600">✓ Valid Gmail address</span>
+                              : 'Must be a valid Gmail address (ending with @gmail.com)'}
+                          </p>
+                        )}
                       </div>
 
                       <div>
@@ -1087,12 +1169,22 @@ END:VCALENDAR`;
                           value={form.phone}
                           onChange={handleChange}
                           required
-                          className="w-full px-4 py-3 rounded-xl border border-gray-300 bg-white text-gray-800 focus:ring-2 focus:ring-emerald-500 focus:outline-none"
-                          placeholder="+254 ___ ___ ___"
-                          pattern="[+]{0,1}[0-9]{7,15}"
-                          title="Please enter a valid phone number"
+                          className={`w-full px-4 py-3 rounded-xl border ${
+                            formErrors.phone ? 'border-red-500' : 'border-gray-300'
+                          } bg-white text-gray-800 focus:ring-2 focus:ring-emerald-500 focus:outline-none`}
+                          placeholder="+254 712 345 678"
                           aria-label="Phone number"
                         />
+                        {formErrors.phone && (
+                          <p className="text-red-500 text-sm mt-1">{formErrors.phone}</p>
+                        )}
+                        {!formErrors.phone && form.phone && (
+                          <p className="text-sm text-gray-500 mt-1">
+                            {validatePhone(form.phone) 
+                              ? <span className="text-emerald-600">✓ Valid phone number ({form.phone.replace(/\D/g, '').length} digits)</span>
+                              : `Phone number must have at least 10 digits (currently ${form.phone.replace(/\D/g, '').length})`}
+                          </p>
+                        )}
                       </div>
 
                       <div>

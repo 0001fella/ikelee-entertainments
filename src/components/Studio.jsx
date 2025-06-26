@@ -92,12 +92,12 @@ export default function Studio() {
 
   // Gallery images
   const galleryImages = [
-    { img: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80", title: "Main Studio" },
-    { img: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80", title: "Live Room" },
-    { img: "https://images.unsplash.com/photo-1546435770-a3e426bf472b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1465&q=80", title: "Vocal Booth" },
-    { img: "https://images.unsplash.com/photo-1510915361894-db8b60106cb1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80", title: "Gear Rack" },
-    { img: "https://images.unsplash.com/photo-1552422535-c45813c61732?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80", title: "Mixing Desk" },
-    { img: '/images/book.jpg', title: "" }
+    { img: '/images/studio1.jpg',  },
+    { img: '/images/new.jpg',  },
+    { img:'/images/producer.jpg', },
+    { img: '/images/season2.jpg',  },
+    { img: '/images/season1.jpg',  },
+    { img: '/images/ikele.jpg',  }
   ];
 
   // Testimonials with actual images
@@ -287,7 +287,7 @@ Message: ${formData.message}`;
           >
             <div className="w-10 h-10 rounded-lg flex items-center justify-center">
               <img 
-                src="/images/logo.png" 
+                src="/images/background.png" 
                 alt="African Masters Logo" 
                 className="w-full h-full object-contain"
               />
@@ -472,7 +472,7 @@ Message: ${formData.message}`;
                       className="w-full h-full flex items-center justify-center"
                     >
                       <img 
-                        src="/images/logo.png" 
+                        src="/images/background.png" 
                         alt="African Masters Logo" 
                         className="w-full h-full object-contain transform rotate-45"
                       />

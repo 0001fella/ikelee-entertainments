@@ -4,101 +4,92 @@ import { Helmet } from 'react-helmet';
 import { 
   Calendar, Mic, Headphones, Video, Camera, User, Users, Check, 
   X, ArrowLeft, Clock, Info, ChevronRight, Star, MapPin, 
-  Phone, Music, Disc, Waves, Volume2, Bookmark, Gift, ArrowRight,
-  ChevronDown, ChevronUp, Plus, Minus, Settings, Monitor, Speaker, Piano
+  Phone, Music, Disc2, Waves, Volume2, Bookmark, Gift, ArrowRight,
+  ChevronDown, ChevronUp, Plus, Minus, Settings, Monitor, Speaker, Piano,
+  Layers, Music2, Film, HeadphonesIcon, Music4, Award, Zap
 } from 'lucide-react';
 
 const services = [
   {
-    value: "recording",
-    label: "Recording Session",
-    icon: <Mic size={20} />,
-    description: "Professional audio recording with our engineers",
-    features: ["High-end microphones", "Soundproof booths", "Expert engineers"],
+    value: "basic-song",
+    label: "Basic Song",
+    price: 9999,
+    icon: <Disc2 size={20} />,
+    description: "Simple recording and mixing for your track",
+    features: ["Basic recording", "Simple mixing", "1 revision", "Delivery in 3 days"],
     color: "from-emerald-600 to-emerald-800"
   },
   {
-    value: "mixing",
-    label: "Mixing & Mastering",
-    icon: <Headphones size={20} />,
-    description: "Polishing your tracks to perfection",
-    features: ["Industry-standard plugins", "Analog emulation", "Reference-quality monitoring"],
+    value: "recording-mixing",
+    label: "Recording & Mixing",
+    price: 23999,
+    icon: <Layers size={20} />,
+    description: "Professional recording with advanced mixing",
+    features: ["Professional recording", "Advanced mixing", "2 revisions", "Delivery in 5 days"],
     color: "from-emerald-500 to-emerald-700"
   },
   {
-    value: "production",
-    label: "Music Production",
-    icon: <Music size={20} />,
-    description: "Full track production from start to finish",
-    features: ["Composer collaboration", "Instrument libraries", "Arrangement expertise"],
+    value: "full-production",
+    label: "Full Production",
+    price: 63999,
+    icon: <Music4 size={20} />,
+    description: "Complete production from start to finish",
+    features: ["Beat making", "Recording session", "Mixing & Mastering", "Unlimited revisions", "3 hours studio time"],
     color: "from-emerald-600 to-emerald-800"
   },
   {
-    value: "video",
-    label: "Video Production",
-    icon: <Video size={20} />,
-    description: "Music videos and visual content creation",
-    features: ["4K cameras", "Green screen", "Professional lighting"],
+    value: "visualizer",
+    label: "Visualizer",
+    price: 9999,
+    icon: <Film size={20} />,
+    description: "Basic music visualization",
+    features: ["Basic animation", "Song visualization", "Simple effects", "Delivery in 5 days"],
     color: "from-emerald-500 to-emerald-700"
   },
   {
-    value: "photography",
-    label: "Photography",
-    icon: <Camera size={20} />,
-    description: "Professional artist photos and album artwork",
-    features: ["Studio lighting", "Backdrops", "Professional editing"],
+    value: "promo-video",
+    label: "Promo Video",
+    price: 19999,
+    icon: <Film size={20} />,
+    description: "Professional promotional video",
+    features: ["Concept development", "1 location shoot", "Basic editing", "Delivery in 7 days"],
     color: "from-emerald-600 to-emerald-800"
   },
   {
-    value: "mastering",
-    label: "Audio Mastering",
-    icon: <Volume2 size={20} />,
-    description: "Final polish for your tracks",
-    features: ["Loudness optimization", "EQ balancing", "Stereo enhancement"],
+    value: "official-video",
+    label: "Official Video",
+    price: 34999,
+    icon: <Film size={20} />,
+    description: "High-quality official music video",
+    features: ["Professional concept", "Multiple locations", "Advanced editing", "Delivery in 14 days"],
     color: "from-emerald-500 to-emerald-700"
-  }
-];
-
-const testimonials = [
-  {
-    id: 1,
-    name: "Amiso Thwango.",
-    role: "Musician",
-    content: "The recording quality at African Masters Studio is unmatched. My tracks came out sounding professional and radio-ready!",
-    rating: 5
-  },
-  {
-    id: 2,
-    name: "Uncle Eddiy",
-    role: "Artist",
-    content: "Their mixing engineers have an incredible ear for detail. They transformed my rough mixes into polished gems.",
-    rating: 5
-  },
-  {
-    id: 3,
-    name: "Elija J..",
-    role: "Artist",
-    content: "The video production team helped bring my creative vision to life. The final music video exceeded my expectations!",
-    rating: 4
   }
 ];
 
 const studioFeatures = [
-  { icon: <Disc size={20} />, title: "State-of-the-art Equipment", description: "Industry-leading gear for pristine sound" },
-  { icon: <Waves size={20} />, title: "Acoustically Treated Rooms", description: "Optimal sound environment for recording" },
-  { icon: <Bookmark size={20} />, title: "Flexible Booking Options", description: "24/7 availability to fit your schedule" },
-  { icon: <Gift size={20} />, title: "Complimentary Refreshments", description: "Stay refreshed during your creative sessions" }
+  { icon: <Disc2 size={20} />, title: "State-of-the-art Equipment", description: "Industry-leading gear for pristine sound" },
+  { icon: <Volume2 size={20} />, title: "Acoustically Treated Rooms", description: "Optimal sound environment for recording" },
+  { icon: <Calendar size={20} />, title: "Flexible Booking Options", description: "24/7 availability to fit your schedule" },
+  { icon: <Music4 size={20} />, title: "Traditional African Instruments", description: "Authentic sounds for cultural expression" }
 ];
 
 const equipmentOptions = [
   { name: "Neumann U87", category: "Microphone" },
+  { name: "AKG C414", category: "Microphone" },
+  { name: "Shure SM7B", category: "Microphone" },
+  { name: "Sony C800G", category: "Microphone" },
   { name: "Yamaha HS8", category: "Monitors" },
-  { name: "Moog Subsequent 37", category: "Synth" },
+  { name: "Focal Trio6", category: "Monitors" },
+  { name: "KRK Rokit", category: "Monitors" },
+  { name: "Genelec 8351", category: "Monitors" },
   { name: "Fender Rhodes", category: "Keyboard" },
-  { name: "API 5500", category: "EQ" },
-  { name: "Universal Audio Apollo", category: "Interface" },
-  { name: "Roland TR-8S", category: "Drum Machine" },
-  { name: "Empirical Labs Distressor", category: "Compressor" }
+  { name: "Moog Synth", category: "Synth" },
+  { name: "Ludwig Drum Kit", category: "Drums" },
+  { name: "Fender Stratocaster", category: "Guitar" },
+  { name: "Pro Tools HD", category: "Software" },
+  { name: "Ableton Suite", category: "Software" },
+  { name: "Logic Pro", category: "Software" },
+  { name: "iZotope RX", category: "Software" }
 ];
 
 // Predefined booked dates for demonstration
@@ -129,7 +120,7 @@ export default function Booking() {
     plannedDate: '',
     plannedTime: '',
     duration: 2,
-    service: '',
+    service: services[0].value,
     message: '',
     selectedEquipment: []
   });
@@ -143,14 +134,10 @@ export default function Booking() {
     plannedTime: ''
   });
 
-  const [selectedService, setSelectedService] = useState(null);
+  const [selectedService, setSelectedService] = useState(services[0]); // Default to first service
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
-  const [currentStep, setCurrentStep] = useState(0);
-  const [showTestimonials, setShowTestimonials] = useState(true);
-  const [availableTimes] = useState([
-    "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00"
-  ]);
+  const [currentStep, setCurrentStep] = useState(1); // Start at step 1 (skip service selection)
   const [showEquipmentSelector, setShowEquipmentSelector] = useState(false);
   const [activeMonth, setActiveMonth] = useState(currentMonth);
   const [activeYear, setActiveYear] = useState(currentYear);
@@ -166,11 +153,13 @@ export default function Booking() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Set selected service when form.service changes
   useEffect(() => {
-    if (showSuccess) {
-      setShowTestimonials(true);
+    const service = services.find(s => s.value === form.service);
+    if (service) {
+      setSelectedService(service);
     }
-  }, [showSuccess]);
+  }, [form.service]);
 
   // Email validation function - must end with @gmail.com
   const validateEmail = (email) => {
@@ -211,7 +200,6 @@ export default function Booking() {
   const handleServiceSelect = (service) => {
     setForm({ ...form, service: service.value });
     setSelectedService(service);
-    setCurrentStep(1);
   };
 
   const calculateDepartureTime = () => {
@@ -230,6 +218,7 @@ export default function Booking() {
     return `New Booking Request:
     
 Service: ${selectedService?.label || 'Not specified'}
+Price: KSh ${selectedService?.price?.toLocaleString('en-KE') || 'Not specified'}
 Name: ${form.name}
 Email: ${form.email || 'Not provided'}
 Phone: ${form.phone}
@@ -263,6 +252,7 @@ Please respond to this booking request as soon as possible.`;
       // Save booking details for confirmation modal
       setBookingDetails({
         service: selectedService?.label,
+        price: selectedService?.price,
         date: form.plannedDate,
         time: form.plannedTime,
         duration: form.duration,
@@ -320,17 +310,6 @@ Please respond to this booking request as soon as possible.`;
     if (!dateString) return '';
     const options = { weekday: 'short', month: 'short', day: 'numeric' };
     return new Date(dateString).toLocaleDateString('en-US', options);
-  };
-
-  const renderStars = (rating) => {
-    return Array.from({ length: 5 }).map((_, i) => (
-      <Star 
-        key={i} 
-        size={16} 
-        fill={i < rating ? "#10b981" : "none"} 
-        className={i < rating ? "text-yellow-400" : "text-gray-300"} 
-      />
-    ));
   };
 
   const toggleEquipment = (equipment) => {
@@ -527,6 +506,10 @@ END:VCALENDAR`;
                       <span className="text-gray-800">{bookingDetails.service}</span>
                     </div>
                     <div className="flex justify-between">
+                      <span className="font-medium text-gray-700">Price:</span>
+                      <span className="text-gray-800">KSh {bookingDetails.price?.toLocaleString('en-KE')}</span>
+                    </div>
+                    <div className="flex justify-between">
                       <span className="font-medium text-gray-700">Date:</span>
                       <span className="text-gray-800">{formatDate(bookingDetails.date)}</span>
                     </div>
@@ -564,25 +547,6 @@ END:VCALENDAR`;
                   </a>
                 </div>
                 
-                <div className="flex items-center justify-center mb-6">
-                  <div className="flex-1 h-px bg-gray-200"></div>
-                  <span className="px-4 text-gray-500 text-sm">OR</span>
-                  <div className="flex-1 h-px bg-gray-200"></div>
-                </div>
-                
-                <div className="mb-6">
-                  <p className="text-sm text-gray-600 mb-3">Scan to save studio contact</p>
-                  <div className="flex justify-center">
-                    <div className="bg-white p-2 rounded-lg border border-gray-200">
-                      <img 
-                        src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://wa.me/254745798255" 
-                        alt="WhatsApp QR Code" 
-                        className="w-24 h-24"
-                      />
-                    </div>
-                  </div>
-                </div>
-                
                 <button
                   onClick={() => setShowSuccess(false)}
                   className="w-full py-3 bg-gradient-to-r from-emerald-600 to-emerald-800 text-white rounded-xl font-semibold hover:shadow-lg transition-all"
@@ -612,10 +576,10 @@ END:VCALENDAR`;
             <span className="ml-2 font-bold text-xl text-gray-800">AFRICAN MASTERS</span>
           </div>
           <div className="flex space-x-8">
-            <a href="#" className="font-medium text-gray-600 hover:text-emerald-600 transition">Home</a>
-            <a href="#" className="font-medium text-gray-600 hover:text-emerald-600 transition">Services</a>
+            <a href="/" className="font-medium text-gray-600 hover:text-emerald-600 transition">Home</a>
+            <a href="/services" className="font-medium text-gray-600 hover:text-emerald-600 transition">Services</a>
             <a href="#" className="font-medium text-gray-600 hover:text-emerald-600 transition">Studio</a>
-            <a href="#" className="font-medium text-gray-600 hover:text-emerald-600 transition">Pricing</a>
+            <a href="#pricing" className="font-medium text-gray-600 hover:text-emerald-600 transition">Pricing</a>
             <a href="#" className="font-medium text-emerald-600">Booking</a>
           </div>
           <button className="px-5 py-2.5 rounded-lg bg-gradient-to-r from-emerald-600 to-emerald-800 text-white font-medium shadow-lg shadow-emerald-100 hover:shadow-emerald-200 transition-all">
@@ -673,6 +637,52 @@ END:VCALENDAR`;
         </div>
       </div>
 
+      {/* Service Selection */}
+      <section className="relative z-10 py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="flex flex-col items-center mb-16">
+            <div className="inline-block bg-gradient-to-r from-emerald-600 to-emerald-800 text-white text-xs font-semibold py-1.5 px-4 rounded-full mb-4 tracking-wider">
+              OUR SERVICES
+            </div>
+            <h2 className="text-3xl font-bold text-center text-gray-900">
+              Choose Your <span className="text-emerald-600">Service</span>
+            </h2>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {services.map((service, index) => (
+              <motion.div
+                key={index}
+                className={`glass-card rounded-2xl p-6 sharp-shadow border ${
+                  form.service === service.value ? 'border-emerald-500 ring-2 ring-emerald-500/20' : 'border-gray-200'
+                }`}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ scale: 1.02 }}
+                onClick={() => handleServiceSelect(service)}
+              >
+                <div className={`p-3 rounded-xl mr-4 mb-4 bg-gradient-to-br ${service.color} text-white inline-flex`}>
+                  {service.icon}
+                </div>
+                <h3 className="font-bold text-lg mb-2 text-gray-900">{service.label}</h3>
+                <p className="text-gray-600 text-sm mb-4">{service.description}</p>
+                <div className="flex justify-between items-center">
+                  <span className="text-lg font-bold text-emerald-600">
+                    KSh {service.price.toLocaleString('en-KE')}
+                  </span>
+                  {form.service === service.value && (
+                    <div className="bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full text-xs font-bold">
+                      SELECTED
+                    </div>
+                  )}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Studio Features */}
       <section className="relative z-10 py-16">
         <div className="max-w-6xl mx-auto px-6">
@@ -709,18 +719,17 @@ END:VCALENDAR`;
       <div className="relative z-10 max-w-6xl mx-auto px-6 mt-6 mb-16">
         {/* Step Indicator */}
         <div className="step-indicator flex justify-between mb-16 relative">
-          {[1, 2, 3, 4].map((step, index) => (
+          {[1, 2, 3].map((step, index) => (
             <div key={step} className="flex flex-col items-center relative">
               <div className={`step w-12 h-12 rounded-full flex items-center justify-center font-bold ${
-                currentStep >= index ? 'completed' : currentStep === index - 1 ? 'active' : ''
+                currentStep >= index + 1 ? 'completed' : currentStep === index ? 'active' : ''
               }`}>
-                {currentStep >= index ? <Check size={20} /> : step}
+                {currentStep >= index + 1 ? <Check size={20} /> : step}
               </div>
               <span className="step-label text-sm font-medium mt-3 text-gray-600">
-                {index === 0 && 'Service'}
-                {index === 1 && 'Schedule'}
-                {index === 2 && 'Details'}
-                {index === 3 && 'Confirm'}
+                {index === 0 && 'Schedule'}
+                {index === 1 && 'Details'}
+                {index === 2 && 'Confirm'}
               </span>
             </div>
           ))}
@@ -730,7 +739,7 @@ END:VCALENDAR`;
       {/* Main Content */}
       <div className="relative z-10 max-w-6xl mx-auto px-6 pb-20" ref={formRef}>
         <div className="grid lg:grid-cols-3 gap-8">
-          {/* Left Column - Service Info & Testimonials */}
+          {/* Left Column - Service Info */}
           <div className="lg:col-span-1">
             {selectedService && (
               <motion.div 
@@ -745,17 +754,11 @@ END:VCALENDAR`;
                   <div>
                     <h3 className="font-bold text-xl text-gray-900">{selectedService.label}</h3>
                     <p className="text-gray-600 text-sm">{selectedService.description}</p>
-                    <button 
-                      onClick={() => {
-                        setSelectedService(null);
-                        setForm(prev => ({ ...prev, service: '' }));
-                        setCurrentStep(0);
-                      }}
-                      className="text-sm text-emerald-600 hover:text-emerald-500 mt-2 flex items-center"
-                      aria-label="Change service"
-                      >
-                      Change service <ChevronRight size={16} className="ml-1" />
-                    </button>
+                    <div className="mt-2">
+                      <span className="text-lg font-bold text-emerald-600">
+                        KSh {selectedService.price?.toLocaleString('en-KE')}
+                      </span>
+                    </div>
                   </div>
                 </div>
                 
@@ -781,56 +784,27 @@ END:VCALENDAR`;
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
             >
-              <div className="flex justify-between items-center mb-4">
-                <h3 className="font-bold text-lg flex items-center text-gray-900">
-                  <MapPin size={20} className="mr-2 text-emerald-500" />
-                  Studio Location
-                </h3>
-                <button 
-                  onClick={() => setShowTestimonials(!showTestimonials)}
-                  className="text-sm text-emerald-600 hover:text-emerald-500"
-                  aria-label={showTestimonials ? "Show location info" : "Show testimonials"}
-                >
-                  {showTestimonials ? "Show Info" : "Show Reviews"}
-                </button>
-              </div>
+              <h3 className="font-bold text-lg flex items-center text-gray-900 mb-4">
+                <MapPin size={20} className="mr-2 text-emerald-500" />
+                Studio Location
+              </h3>
               
-              {!showTestimonials ? (
-                <div>
-                  <div className="bg-gradient-to-br from-emerald-50 to-emerald-50 rounded-xl w-full h-48 mb-4 flex items-center justify-center border border-gray-200">
-                    <div className="text-center p-4">
-                      <MapPin size={32} className="mx-auto text-emerald-500 mb-2" />
-                      <p className="font-semibold text-gray-800">African Masters Studio</p>
-                      <p className="text-gray-600">nyali breeze apartments lucky summer</p>
-                    </div>
-                  </div>
-                  <p className="text-gray-600 mb-2">
-                    <span className="font-medium text-gray-700">Address:</span> nyali breeze apartments lucky summer, Nairobi, Kenya
-                  </p>
-                  <p className="text-gray-600 mb-2">
-                    <span className="font-medium text-gray-700">Hours:</span> Mon-Sat: 9AM - 10PM
-                  </p>
-                  <p className="text-gray-600">
-                    <span className="font-medium text-gray-700">Facilities:</span> Parking, Lounge, Refreshments
-                  </p>
+              <div className="bg-gradient-to-br from-emerald-50 to-emerald-50 rounded-xl w-full h-48 mb-4 flex items-center justify-center border border-gray-200">
+                <div className="text-center p-4">
+                  <MapPin size={32} className="mx-auto text-emerald-500 mb-2" />
+                  <p className="font-semibold text-gray-800">African Masters Studio</p>
+                  <p className="text-gray-600">nyali breeze apartments lucky summer</p>
                 </div>
-              ) : (
-                <div>
-                  <h4 className="font-semibold mb-3 text-emerald-600">Client Testimonials</h4>
-                  <div className="space-y-4">
-                    {testimonials.map(testimonial => (
-                      <div key={testimonial.id} className="bg-gray-50 rounded-lg p-4 border border-gray-200">
-                        <div className="flex mb-2">
-                          {renderStars(testimonial.rating)}
-                        </div>
-                        <p className="text-gray-700 italic mb-3">"{testimonial.content}"</p>
-                        <p className="font-semibold text-gray-800">{testimonial.name}</p>
-                        <p className="text-sm text-gray-600">{testimonial.role}</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
+              </div>
+              <p className="text-gray-600 mb-2">
+                <span className="font-medium text-gray-700">Address:</span> nyali breeze apartments lucky summer, Nairobi, Kenya
+              </p>
+              <p className="text-gray-600 mb-2">
+                <span className="font-medium text-gray-700">Hours:</span> Mon-Sat: 9AM - 10PM
+              </p>
+              <p className="text-gray-600">
+                <span className="font-medium text-gray-700">Facilities:</span> Parking, Lounge, Refreshments
+              </p>
             </motion.div>
           </div>
           
@@ -838,58 +812,6 @@ END:VCALENDAR`;
           <div className="lg:col-span-2">
             <div className="glass-card rounded-2xl p-8 sharp-shadow">
               <AnimatePresence mode="wait">
-                {/* Step 0: Service Selection */}
-                {currentStep === 0 && (
-                  <motion.div
-                    key="step0"
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -20 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <h2 className="text-3xl font-bold mb-6 text-gray-900">
-                      Choose Your <span className="text-emerald-600"> Service</span>
-                    </h2>
-                    
-                    <div className="grid md:grid-cols-2 gap-6 mb-8">
-                      {services.map((service) => (
-                        <motion.button
-                          key={service.value}
-                          onClick={() => handleServiceSelect(service)}
-                          className={`service-card text-left p-6 rounded-xl transition-all flex items-start border bg-gradient-to-br ${service.color}/10 backdrop-blur-sm border-gray-200 hover:border-emerald-400`}
-                          aria-label={`Select ${service.label} service`}
-                          whileHover={{ scale: 1.02 }}
-                          whileTap={{ scale: 0.98 }}
-                        >
-                          <div className={`p-3 rounded-xl mr-4 bg-gradient-to-br ${service.color} text-white`}>
-                            {service.icon}
-                          </div>
-                          <div>
-                            <h3 className="text-lg font-semibold mb-1 text-gray-900">{service.label}</h3>
-                            <p className="text-gray-600 text-sm">{service.description}</p>
-                          </div>
-                        </motion.button>
-                      ))}
-                    </div>
-                    
-                    <div className="flex justify-end">
-                      <button
-                        onClick={nextStep}
-                        disabled={!selectedService}
-                        className={`px-6 py-3 rounded-xl font-semibold transition-all flex items-center ${
-                          !selectedService
-                            ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                            : 'bg-gradient-to-r from-emerald-600 to-emerald-800 text-white hover:shadow-lg shadow-md shadow-emerald-200'
-                        }`}
-                        aria-label="Continue to scheduling"
-                      >
-                        Continue to Scheduling
-                        <ChevronRight size={18} className="ml-2" />
-                      </button>
-                    </div>
-                  </motion.div>
-                )}
-                
                 {/* Step 1: Date & Time */}
                 {currentStep === 1 && (
                   <motion.div
@@ -1011,7 +933,7 @@ END:VCALENDAR`;
                     <div className="mb-6">
                       <label className="block mb-2 text-gray-700 font-medium">Start Time <span className="text-emerald-600">*</span></label>
                       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-                        {availableTimes.map(time => (
+                        {["09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00"].map(time => (
                           <button
                             key={time}
                             type="button"
@@ -1077,15 +999,7 @@ END:VCALENDAR`;
                       </div>
                     </div>
                     
-                    <div className="flex justify-between">
-                      <button
-                        onClick={prevStep}
-                        className="px-6 py-3 rounded-xl font-medium text-emerald-600 hover:bg-emerald-50 transition-all flex items-center border border-gray-300"
-                        aria-label="Back to services"
-                      >
-                        <ArrowLeft size={18} className="mr-2" />
-                        Back to Services
-                      </button>
+                    <div className="flex justify-end">
                       <button
                         onClick={nextStep}
                         disabled={!form.plannedDate || !form.plannedTime}
@@ -1268,10 +1182,9 @@ END:VCALENDAR`;
                                     {equipment.category === "Monitors" && <Speaker size={16} />}
                                     {equipment.category === "Synth" && <Piano size={16} />}
                                     {equipment.category === "Keyboard" && <Piano size={16} />}
-                                    {equipment.category === "EQ" && <Settings size={16} />}
-                                    {equipment.category === "Interface" && <Monitor size={16} />}
-                                    {equipment.category === "Drum Machine" && <Music size={16} />}
-                                    {equipment.category === "Compressor" && <Settings size={16} />}
+                                    {equipment.category === "Drums" && <Music size={16} />}
+                                    {equipment.category === "Guitar" && <Music size={16} />}
+                                    {equipment.category === "Software" && <Settings size={16} />}
                                   </div>
                                   <div>
                                     <div className="text-sm font-medium text-gray-800">{equipment.name}</div>
@@ -1340,6 +1253,10 @@ END:VCALENDAR`;
                             <div className="flex">
                               <span className="font-medium w-32 text-gray-600">Service:</span>
                               <span className="font-medium text-gray-800">{selectedService?.label}</span>
+                            </div>
+                            <div className="flex">
+                              <span className="font-medium w-32 text-gray-600">Price:</span>
+                              <span className="text-gray-800 font-medium">KSh {selectedService?.price?.toLocaleString('en-KE')}</span>
                             </div>
                             <div className="flex">
                               <span className="font-medium w-32 text-gray-600">Date:</span>

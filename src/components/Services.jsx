@@ -11,9 +11,6 @@ const Services = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const videoRef = useRef(null);
 
-  // Base price for one song/track
-  const BASE_PRICE = 8000;
-
   // Track scroll position for header effect
   useEffect(() => {
     const handleScroll = () => {
@@ -32,22 +29,20 @@ const Services = () => {
   const pricingPlans = [
     {
       icon: <Disc2 size={32} className="text-emerald-600" />,
-      title: "Basic Mixing",
-      description: "Professional audio mixing for your tracks",
-      price: BASE_PRICE,
-      period: "per song",
-      features: ["Stereo enhancement", "Dynamic control", "Loudness optimization", "1 revision"],
+      title: "Basic Song",
+      description: "Simple recording and mixing for your track",
+      price: 9999,
+      features: ["Basic recording", "Simple mixing", "1 revision", "Delivery in 3 days"],
       popular: false,
       color: "border-gray-200",
       highlight: false
     },
     {
       icon: <Layers size={32} className="text-emerald-600" />,
-      title: "Recording + Mixing",
-      description: "Recording session with professional mixing",
-      price: BASE_PRICE * 3,
-      period: "per song",
-      features: ["2-hour recording session", "Professional mixing", "High-quality microphones", "2 revisions"],
+      title: "Recording & Mixing",
+      description: "Professional recording with advanced mixing",
+      price: 23999,
+      features: ["Professional recording", "Advanced mixing", "2 revisions", "Delivery in 5 days"],
       popular: true,
       color: "border-emerald-500",
       highlight: true
@@ -56,8 +51,7 @@ const Services = () => {
       icon: <Music4 size={32} className="text-emerald-600" />,
       title: "Full Production",
       description: "Complete production from start to finish",
-      price: BASE_PRICE * 8,
-      period: "per song",
+      price: 63999,
       features: ["Beat making", "Recording session", "Mixing & Mastering", "Unlimited revisions", "3 hours studio time"],
       popular: false,
       color: "border-gray-200",
@@ -65,33 +59,30 @@ const Services = () => {
     },
     {
       icon: <Film size={32} className="text-emerald-600" />,
-      title: "Video Package",
-      description: "Music video production",
-      price: BASE_PRICE * 20,
-      period: "base package",
-      features: ["Concept development", "1 day shooting", "Professional editing", "Color grading"],
+      title: "Visualizer",
+      description: "Basic music visualization",
+      price: 9999,
+      features: ["Basic animation", "Song visualization", "Simple effects", "Delivery in 5 days"],
       popular: false,
       color: "border-gray-200",
       highlight: false
     },
     {
-      icon: <HeadphonesIcon size={32} className="text-emerald-600" />,
-      title: "Podcast Production",
-      description: "Professional podcast recording",
-      price: BASE_PRICE * 2,
-      period: "per episode",
-      features: ["Audio cleanup", "Show notes", "Distribution", "Episode artwork"],
+      icon: <Film size={32} className="text-emerald-600" />,
+      title: "Promo Video",
+      description: "Professional promotional video",
+      price: 19999,
+      features: ["Concept development", "1 location shoot", "Basic editing", "Delivery in 7 days"],
       popular: false,
       color: "border-gray-200",
       highlight: false
     },
     {
-      icon: <Zap size={32} className="text-emerald-600" />,
-      title: "Custom Project",
-      description: "Tailored solutions for complex needs",
-      price: "Custom",
-      period: "quote",
-      features: ["Sound design", "Scoring", "Dialogue editing", "Custom requirements"],
+      icon: <Film size={32} className="text-emerald-600" />,
+      title: "Official Video",
+      description: "High-quality official music video",
+      price: 34999,
+      features: ["Professional concept", "Multiple locations", "Advanced editing", "Delivery in 14 days"],
       popular: false,
       color: "border-gray-200",
       highlight: false
@@ -204,37 +195,109 @@ const Services = () => {
       >
         <div className="max-w-6xl mx-auto px-6 flex justify-between items-center">
           <div className="flex items-center">
-            <div className="bg-gradient-to-r from-emerald-600 to-emerald-800 w-10 h-10 rounded-lg flex items-center justify-center text-white font-bold">
+            <motion.div 
+              className="bg-gradient-to-r from-emerald-600 to-emerald-800 w-10 h-10 rounded-lg flex items-center justify-center text-white font-bold"
+              whileHover={{ rotate: 360 }}
+              transition={{ duration: 0.6 }}
+            >
               AM
-            </div>
+            </motion.div>
             <span className="ml-2 font-bold text-xl text-gray-800">AFRICAN MASTERS</span>
           </div>
           <div className="hidden md:flex space-x-8">
-            <a href="/" className="font-medium text-gray-600 hover:text-emerald-600 transition">Home</a>
-            <a href="#pricing" className="font-medium text-gray-600 hover:text-emerald-600 transition">Pricing</a>
-            <a href="#equipment" className="font-medium text-gray-600 hover:text-emerald-600 transition">Equipment</a>
-            <a href="#testimonials" className="font-medium text-gray-600 hover:text-emerald-600 transition">Testimonials</a>
-            <a href="#faq" className="font-medium text-emerald-600">FAQ</a>
+            <motion.a 
+              href="/" 
+              className="font-medium text-gray-600 hover:text-emerald-600 transition"
+              whileHover={{ scale: 1.1 }}
+            >
+              Home
+            </motion.a>
+            <motion.a 
+              href="#pricing" 
+              className="font-medium text-gray-600 hover:text-emerald-600 transition"
+              whileHover={{ scale: 1.1 }}
+            >
+              Pricing
+            </motion.a>
+            <motion.a 
+              href="#equipment" 
+              className="font-medium text-gray-600 hover:text-emerald-600 transition"
+              whileHover={{ scale: 1.1 }}
+            >
+              Equipment
+            </motion.a>
+            <motion.a 
+              href="#testimonials" 
+              className="font-medium text-gray-600 hover:text-emerald-600 transition"
+              whileHover={{ scale: 1.1 }}
+            >
+              Testimonials
+            </motion.a>
+            <motion.a 
+              href="#faq" 
+              className="font-medium text-emerald-600"
+              whileHover={{ scale: 1.1 }}
+            >
+              FAQ
+            </motion.a>
           </div>
-          <button 
+          <motion.button 
             onClick={() => handleBooking("Contact")}
             className="px-5 py-2.5 rounded-lg bg-gradient-to-r from-emerald-600 to-emerald-800 text-white font-medium shadow-lg shadow-emerald-100 hover:shadow-emerald-200 transition-all"
+            whileHover={{ 
+              scale: 1.05,
+              boxShadow: "0 10px 15px -3px rgba(5, 150, 105, 0.3)"
+            }}
+            whileTap={{ scale: 0.98 }}
           >
             Contact Us
-          </button>
+          </motion.button>
         </div>
       </motion.div>
 
-      {/* Hero Section - Redesigned to match booking page */}
+      {/* Hero Section */}
       <div className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
         <div className="absolute inset-0 z-0">
           <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-emerald-500/5 to-emerald-800/10"></div>
           <div className="absolute top-0 left-0 w-full h-full bg-[url('https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&q=80&w=2940')] bg-cover bg-center opacity-10"></div>
           
-          {/* Decorative elements */}
-          <div className="absolute top-20 left-10 w-64 h-64 rounded-full bg-emerald-400 opacity-10 blur-3xl"></div>
-          <div className="absolute bottom-10 right-20 w-80 h-80 rounded-full bg-emerald-600 opacity-10 blur-3xl"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full border border-emerald-200 opacity-10"></div>
+          {/* Animated decorative elements */}
+          <motion.div
+            className="absolute top-20 left-10 w-64 h-64 rounded-full bg-emerald-400 opacity-10 blur-3xl"
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.1, 0.15, 0.1]
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+          <motion.div
+            className="absolute bottom-10 right-20 w-80 h-80 rounded-full bg-emerald-600 opacity-10 blur-3xl"
+            animate={{
+              scale: [1, 1.3, 1],
+              opacity: [0.1, 0.2, 0.1]
+            }}
+            transition={{
+              duration: 10,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+          <motion.div
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full border border-emerald-200 opacity-10"
+            animate={{
+              scale: [1, 1.1, 1],
+              opacity: [0.1, 0.15, 0.1]
+            }}
+            transition={{
+              duration: 12,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
         </div>
         
         <div className="relative z-10 max-w-6xl mx-auto px-6">
@@ -266,19 +329,30 @@ const Services = () => {
               transition={{ delay: 0.4, duration: 0.8 }}
               className="flex flex-wrap justify-center gap-4"
             >
-              <a 
+              <motion.a 
                 href="#pricing" 
                 className="px-8 py-3.5 rounded-full bg-gradient-to-r from-emerald-600 to-emerald-800 text-white font-medium flex items-center gap-2 shadow-lg hover:shadow-xl transition-all"
+                whileHover={{ 
+                  scale: 1.05,
+                  boxShadow: "0 10px 25px -5px rgba(5, 150, 105, 0.4)"
+                }}
+                whileTap={{ scale: 0.98 }}
               >
                 View Pricing
-              </a>
-              <button 
+              </motion.a>
+              <motion.button 
                 onClick={() => setShowVideo(true)}
                 className="px-8 py-3.5 rounded-full border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white transition-colors flex items-center gap-2"
+                whileHover={{ 
+                  scale: 1.05,
+                  backgroundColor: "#059669",
+                  color: "#ffffff"
+                }}
+                whileTap={{ scale: 0.98 }}
               >
                 <Play size={20} />
                 Studio Tour
-              </button>
+              </motion.button>
             </motion.div>
           </motion.div>
         </div>
@@ -288,9 +362,12 @@ const Services = () => {
       <section className="relative z-10 py-16 bg-white">
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex flex-col items-center mb-16">
-            <div className="inline-block bg-gradient-to-r from-emerald-600 to-emerald-800 text-white text-xs font-semibold py-1.5 px-4 rounded-full mb-4 tracking-wider">
+            <motion.div
+              className="inline-block bg-gradient-to-r from-emerald-600 to-emerald-800 text-white text-xs font-semibold py-1.5 px-4 rounded-full mb-4 tracking-wider"
+              whileHover={{ scale: 1.05 }}
+            >
               PREMIUM STUDIO EXPERIENCE
-            </div>
+            </motion.div>
             <h2 className="text-3xl font-bold text-center text-gray-900">
               Why <span className="text-emerald-600">African Masters Studio</span>
             </h2>
@@ -310,10 +387,17 @@ const Services = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
+                whileHover={{ 
+                  y: -10,
+                  boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+                }}
               >
-                <div className="bg-gradient-to-br from-emerald-600 to-emerald-800 p-3 rounded-xl w-14 h-14 flex items-center justify-center text-white mb-6">
+                <motion.div 
+                  className="bg-gradient-to-br from-emerald-600 to-emerald-800 p-3 rounded-xl w-14 h-14 flex items-center justify-center text-white mb-6"
+                  whileHover={{ rotate: 15 }}
+                >
                   {feature.icon}
-                </div>
+                </motion.div>
                 <h3 className="font-bold text-lg mb-3 text-gray-900">{feature.title}</h3>
                 <p className="text-gray-600">{feature.description}</p>
               </motion.div>
@@ -332,14 +416,17 @@ const Services = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="inline-block bg-gradient-to-r from-emerald-700 to-emerald-900 text-white px-4 py-1.5 rounded-full text-xs font-medium tracking-wider mb-6">
+            <motion.div
+              className="inline-block bg-gradient-to-r from-emerald-700 to-emerald-900 text-white px-4 py-1.5 rounded-full text-xs font-medium tracking-wider mb-6"
+              whileHover={{ scale: 1.05 }}
+            >
               TRANSPARENT PRICING
-            </div>
+            </motion.div>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Affordable <span className="text-emerald-600">Pricing Plans</span>
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Professional services with clear pricing based on one song at KSh 8,000
+              Professional services with clear pricing for all your production needs
             </p>
           </motion.div>
 
@@ -368,22 +455,35 @@ const Services = () => {
                 {plan.popular && (
                   <motion.div 
                     className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-emerald-600 text-white text-xs font-bold px-4 py-1.5 rounded-full z-10"
-                    animate={{ scale: [1, 1.05, 1] }}
-                    transition={{ duration: 2, repeat: Infinity }}
+                    animate={{ 
+                      scale: [1, 1.05, 1],
+                      y: [0, -2, 0]
+                    }}
+                    transition={{ 
+                      duration: 2, 
+                      repeat: Infinity,
+                      ease: "easeInOut"
+                    }}
                   >
-                    WITH DISCOUNT
+                    POPULAR CHOICE
                   </motion.div>
                 )}
                 
                 <div className="p-8 bg-white group-hover:bg-opacity-95 transition-all">
                   <div className="flex items-center justify-between mb-6">
-                    <div className="w-12 h-12 flex items-center justify-center rounded-lg bg-white shadow-sm group-hover:shadow-md transition-all border border-gray-200">
+                    <motion.div 
+                      className="w-12 h-12 flex items-center justify-center rounded-lg bg-white shadow-sm group-hover:shadow-md transition-all border border-gray-200"
+                      whileHover={{ rotate: 15 }}
+                    >
                       {plan.icon}
-                    </div>
+                    </motion.div>
                     {plan.popular && (
-                      <div className="px-3 py-1 bg-emerald-100 text-emerald-800 rounded-full text-xs font-bold">
+                      <motion.div 
+                        className="px-3 py-1 bg-emerald-100 text-emerald-800 rounded-full text-xs font-bold"
+                        whileHover={{ scale: 1.1 }}
+                      >
                         BEST VALUE
-                      </div>
+                      </motion.div>
                     )}
                   </div>
                   
@@ -392,24 +492,33 @@ const Services = () => {
                   
                   <div className="mb-6">
                     <div className="flex items-end justify-start">
-                      <span className="text-4xl font-bold text-emerald-600">{formatPrice(plan.price)}</span>
-                      <span className="text-gray-500 ml-2 mb-1">/{plan.period}</span>
+                      <motion.span 
+                        className="text-4xl font-bold text-emerald-600"
+                        whileHover={{ scale: 1.05 }}
+                      >
+                        {formatPrice(plan.price)}
+                      </motion.span>
                     </div>
-                    {typeof plan.price === 'number' && plan.price > BASE_PRICE && (
-                      <div className="text-sm text-gray-500 mt-1">
-                        Based on {plan.price / BASE_PRICE} × single song price
-                      </div>
-                    )}
                   </div>
                   
                   <div className="border-t border-gray-200 pt-6">
                     <h4 className="text-sm font-semibold text-emerald-500 mb-3 uppercase tracking-wider">KEY FEATURES:</h4>
                     <ul className="space-y-3">
                       {plan.features.map((feature, j) => (
-                        <li key={j} className="flex items-start">
-                          <Check size={16} className="text-emerald-600 mt-1 mr-2 flex-shrink-0" />
+                        <motion.li 
+                          key={j} 
+                          className="flex items-start"
+                          whileHover={{ x: 5 }}
+                        >
+                          <motion.span 
+                            className="text-emerald-600 mr-2"
+                            animate={{ scale: [1, 1.2, 1] }}
+                            transition={{ duration: 0.5 }}
+                          >
+                            <Check size={16} className="mt-1 flex-shrink-0" />
+                          </motion.span>
                           <span className="text-gray-600">{feature}</span>
-                        </li>
+                        </motion.li>
                       ))}
                     </ul>
                   </div>
@@ -431,30 +540,12 @@ const Services = () => {
                     }}
                     whileTap={{ scale: 0.97 }}
                   >
-                    {plan.price === "Custom" ? "Get Quote" : "Book Now"}
+                    Book Now
                   </motion.button>
                 </div>
               </motion.div>
             ))}
           </div>
-          
-          {/* Pricing Note */}
-          <motion.div 
-            className="mt-12 p-6 bg-white rounded-xl border border-gray-200 max-w-3xl mx-auto text-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            <div className="inline-flex items-center bg-gradient-to-r from-emerald-700 to-emerald-900 text-white px-4 py-1.5 rounded-full text-xs font-medium tracking-wider mb-4">
-              PRICE CALCULATION
-            </div>
-            <h3 className="text-xl font-bold mb-2">How We Calculate Prices</h3>
-            <p className="text-gray-600">
-              All our pricing is based on our standard rate of <span className="font-semibold">KSh 8,000 per song</span>. 
-              More complex services are calculated as multiples of this base rate to ensure fairness and transparency.
-            </p>
-          </motion.div>
         </div>
       </section>
 
@@ -468,9 +559,12 @@ const Services = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="inline-block bg-gradient-to-r from-emerald-700 to-emerald-900 text-white px-4 py-1.5 rounded-full text-xs font-medium tracking-wider mb-6">
+            <motion.div
+              className="inline-block bg-gradient-to-r from-emerald-700 to-emerald-900 text-white px-4 py-1.5 rounded-full text-xs font-medium tracking-wider mb-6"
+              whileHover={{ scale: 1.05 }}
+            >
               STUDIO GEAR
-            </div>
+            </motion.div>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Premium <span className="text-emerald-600">Equipment</span>
             </h2>
@@ -493,7 +587,10 @@ const Services = () => {
                   stiffness: 100
                 }}
                 className="bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-md transition-all group"
-                whileHover={{ scale: 1.03 }}
+                whileHover={{ 
+                  scale: 1.03,
+                  boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1)"
+                }}
               >
                 <div className="relative h-48 overflow-hidden">
                   <motion.div 
@@ -502,19 +599,32 @@ const Services = () => {
                     whileHover={{ scale: 1.1 }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/50 to-transparent" />
-                  <div className="absolute top-4 right-4 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-lg border border-gray-200">
+                  <motion.div 
+                    className="absolute top-4 right-4 w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-lg border border-gray-200"
+                    whileHover={{ rotate: 15 }}
+                  >
                     {item.icon}
-                  </div>
+                  </motion.div>
                 </div>
                 
                 <div className="p-6">
                   <h3 className="text-xl font-bold mb-3 text-gray-800">{item.title}</h3>
                   <ul className="space-y-2">
                     {item.items.map((gear, j) => (
-                      <li key={j} className="flex items-start">
-                        <Check size={16} className="text-emerald-600 mt-1 mr-2 flex-shrink-0" />
+                      <motion.li 
+                        key={j} 
+                        className="flex items-start"
+                        whileHover={{ x: 5 }}
+                      >
+                        <motion.span 
+                          className="text-emerald-600 mr-2"
+                          animate={{ scale: [1, 1.2, 1] }}
+                          transition={{ duration: 0.5 }}
+                        >
+                          <Check size={16} className="mt-1 flex-shrink-0" />
+                        </motion.span>
                         <span className="text-gray-600">{gear}</span>
-                      </li>
+                      </motion.li>
                     ))}
                   </ul>
                 </div>
@@ -534,9 +644,12 @@ const Services = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="inline-block bg-gradient-to-r from-emerald-700 to-emerald-900 text-white px-4 py-1.5 rounded-full text-xs font-medium tracking-wider mb-6">
+            <motion.div
+              className="inline-block bg-gradient-to-r from-emerald-700 to-emerald-900 text-white px-4 py-1.5 rounded-full text-xs font-medium tracking-wider mb-6"
+              whileHover={{ scale: 1.05 }}
+            >
               ARTIST TESTIMONIALS
-            </div>
+            </motion.div>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               What <span className="text-emerald-600">Our Artists Say</span>
             </h2>
@@ -559,25 +672,34 @@ const Services = () => {
                   stiffness: 100
                 }}
                 className="bg-white p-6 md:p-8 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-all relative overflow-hidden"
-                whileHover={{ scale: 1.02 }}
+                whileHover={{ 
+                  scale: 1.02,
+                  boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1)"
+                }}
               >
                 <div className="flex mb-4">
                   {renderStars(testimonial.stars)}
                 </div>
                 <p className="text-gray-600 italic mb-6 relative z-10">"{testimonial.quote}"</p>
-                <div className="flex items-center relative z-10">
-                  <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-emerald-600">
+                <motion.div 
+                  className="flex items-center relative z-10"
+                  whileHover={{ x: 5 }}
+                >
+                  <motion.div 
+                    className="w-12 h-12 rounded-full overflow-hidden border-2 border-emerald-600"
+                    whileHover={{ scale: 1.1 }}
+                  >
                     <img 
                       src={testimonial.avatar} 
                       alt={testimonial.name}
                       className="w-full h-full object-cover"
                     />
-                  </div>
+                  </motion.div>
                   <div className="ml-4">
                     <h4 className="text-lg font-bold text-gray-800">{testimonial.name}</h4>
                     <p className="text-emerald-600 text-sm">{testimonial.role}</p>
                   </div>
-                </div>
+                </motion.div>
               </motion.div>
             ))}
           </div>
@@ -594,9 +716,12 @@ const Services = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="inline-block bg-gradient-to-r from-emerald-700 to-emerald-900 text-white px-4 py-1.5 rounded-full text-xs font-medium tracking-wider mb-6">
+            <motion.div
+              className="inline-block bg-gradient-to-r from-emerald-700 to-emerald-900 text-white px-4 py-1.5 rounded-full text-xs font-medium tracking-wider mb-6"
+              whileHover={{ scale: 1.05 }}
+            >
               FREQUENTLY ASKED
-            </div>
+            </motion.div>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Common <span className="text-emerald-600">Questions</span>
             </h2>
@@ -626,17 +751,24 @@ const Services = () => {
                   visible: { opacity: 1, y: 0 }
                 }}
                 className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all"
-                whileHover={{ y: -5 }}
+                whileHover={{ 
+                  y: -5,
+                  boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1)"
+                }}
               >
-                <button 
+                <motion.button 
                   className="w-full p-6 text-left flex justify-between items-center hover:bg-emerald-50 transition-colors"
                   onClick={() => setActiveFAQ(activeFAQ === i ? null : i)}
+                  whileHover={{ backgroundColor: "#ecfdf5" }}
                 >
                   <h3 className="text-lg font-medium text-gray-800">{faq.question}</h3>
-                  <div className="text-emerald-600">
+                  <motion.div 
+                    className="text-emerald-600"
+                    animate={{ rotate: activeFAQ === i ? 180 : 0 }}
+                  >
                     {activeFAQ === i ? <X size={20} /> : <Plus size={20} />}
-                  </div>
-                </button>
+                  </motion.div>
+                </motion.button>
                 
                 {activeFAQ === i && (
                   <motion.div 
@@ -657,23 +789,27 @@ const Services = () => {
       {/* Booking CTA */}
       <section id="booking" className="relative py-16 px-4 md:py-20 md:px-6 z-10">
         <div className="max-w-5xl mx-auto rounded-3xl overflow-hidden">
-          <div className="bg-gradient-to-br from-emerald-700 to-emerald-900 rounded-3xl p-8 md:p-12 relative overflow-hidden">
+          <motion.div 
+            className="bg-gradient-to-br from-emerald-700 to-emerald-900 rounded-3xl p-8 md:p-12 relative overflow-hidden"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            whileHover={{ 
+              scale: 1.01,
+              boxShadow: "0 20px 25px -5px rgba(5, 150, 105, 0.3)"
+            }}
+          >
             <motion.h2 
               className="text-3xl md:text-4xl font-bold mb-6 text-white text-center relative z-10"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              whileHover={{ scale: 1.02 }}
             >
               Ready to <span className="text-white">Create</span> With Us?
             </motion.h2>
             
             <motion.p 
               className="text-white/90 text-xl mb-10 max-w-2xl mx-auto text-center relative z-10"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              whileHover={{ scale: 1.01 }}
             >
               Book your session today and experience authentic African music production
             </motion.p>
@@ -688,7 +824,10 @@ const Services = () => {
               <motion.button
                 onClick={() => handleBooking("Session")}
                 className="px-6 py-3 md:px-8 md:py-4 rounded-lg bg-white text-emerald-700 font-semibold hover:bg-gray-100 transition-all flex items-center gap-2"
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ 
+                  scale: 1.05,
+                  boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1)"
+                }}
                 whileTap={{ scale: 0.97 }}
               >
                 <Calendar size={20} />
@@ -698,18 +837,22 @@ const Services = () => {
               <motion.button
                 onClick={() => handleBooking("Contact")}
                 className="px-6 py-3 md:px-8 md:py-4 rounded-lg border-2 border-white text-white hover:bg-white/10 transition-colors flex items-center gap-2"
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ 
+                  scale: 1.05,
+                  backgroundColor: "rgba(255, 255, 255, 0.1)",
+                  boxShadow: "0 10px 15px -3px rgba(255, 255, 255, 0.1)"
+                }}
                 whileTap={{ scale: 0.97 }}
               >
                 <MessageCircle size={20} />
                 CONTACT US
               </motion.button>
             </motion.div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Updated Video Modal */}
+      {/* Video Modal */}
       <AnimatePresence>
         {showVideo && (
           <motion.div 
@@ -727,12 +870,13 @@ const Services = () => {
               transition={{ type: "spring", damping: 25 }}
               onClick={(e) => e.stopPropagation()}
             >
-              <button 
+              <motion.button 
                 className="absolute top-4 right-4 text-white hover:text-emerald-400 transition-colors z-10 bg-black/50 rounded-full p-2"
                 onClick={() => setShowVideo(false)}
+                whileHover={{ rotate: 90, scale: 1.1 }}
               >
                 <X size={24} />
-              </button>
+              </motion.button>
               
               <div className="aspect-video bg-black flex items-center justify-center">
                 <video 

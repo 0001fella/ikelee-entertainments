@@ -153,7 +153,7 @@ const AfricanMastersStudio = () => {
           }}
         >
           <img 
-            src="/images/logo.png" 
+            src="/images/background.png" 
             alt="African Masters Logo" 
             className="w-12 h-12 md:w-16 md:h-16 object-contain"
           />
@@ -248,7 +248,7 @@ const AfricanMastersStudio = () => {
               whileHover={hoverScale}
             >
               <img 
-                src="/images/logo.png" 
+                src="/images/background.png" 
                 alt="African Masters Studio" 
                 className="w-full h-80 object-cover"
               />
@@ -711,7 +711,7 @@ const AfricanMastersStudio = () => {
               className="mr-3"
             >
               <img 
-                src="/images/logo.png" 
+                src="/images/background.png" 
                 alt="African Masters Logo" 
                 className="w-10 h-10"
               />

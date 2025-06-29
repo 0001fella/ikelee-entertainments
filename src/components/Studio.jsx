@@ -472,7 +472,7 @@ Message: ${formData.message}`;
                       className="w-full h-full flex items-center justify-center"
                     >
                       <img 
-                        src="/images/background.png" 
+                        src="/images/kido.jpg" 
                         alt="African Masters Logo" 
                         className="w-full h-full object-contain transform rotate-45"
                       />

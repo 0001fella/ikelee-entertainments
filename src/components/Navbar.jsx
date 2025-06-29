@@ -66,7 +66,7 @@ export default function Navbar() {
           <Link to="/" className="flex items-center group py-3">
             <div className="relative">
               <img
-                src="/images/logo.png"
+                src="/images/kido.jpg"
                 alt="Favicon"
                 className="w-10 h-10 rounded-full mr-3 object-cover border-2 border-amber-500 shadow-sm"
               />

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { 
   Mic, Camera, Headphones, Disc, Music, Video, Radio, ChevronRight, 
   Star, Instagram, Twitter, Youtube, MapPin, Calendar, MessageCircle, 
-  Play, Award, Volume2, Monitor, Users, Music2, Album, X, Pause, ChevronLeft
+  Play, Award, Volume2, Monitor, Users, Music2, Album, X, Pause, ChevronLeft, Phone
 } from 'lucide-react';
 
 const features = [
@@ -505,6 +505,185 @@ const About = () => {
         </div>
       </section>
 
+      {/* Jenga Msani Program Section with actual images and contact info */}
+      <section className="py-16 md:py-24 px-4 md:px-8 bg-gradient-to-b from-amber-50 to-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <div className="inline-flex items-center bg-green-600 text-white px-4 py-2 rounded-full text-sm font-bold tracking-wider mb-6">
+                UPCOMING PROGRAM
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                <span className="text-green-600">Jenga Msani</span> Talent Program
+              </h2>
+              <p className="text-gray-600 max-w-2xl mx-auto">
+                Nurturing the next generation of African musical talent through mentorship, production support, and industry exposure
+              </p>
+            </motion.div>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="relative"
+            >
+              <motion.div
+                className="rounded-2xl overflow-hidden shadow-xl"
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <img 
+                  src="/images/msani.jpg" 
+                  alt="Jenga Msani Program" 
+                  className="w-full h-96 object-cover"
+                />
+              </motion.div>
+              <motion.div
+                className="absolute -bottom-6 -right-6 w-32 h-32 rounded-xl overflow-hidden border-4 border-white shadow-lg"
+                initial={{ scale: 0.8, opacity: 0 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3, duration: 0.5 }}
+                whileHover={{ rotate: 5, scale: 1.1 }}
+              >
+                <img 
+                  src="/images/msani1.jpg" 
+                  alt="Jenga Msani Talent" 
+                  className="w-full h-full object-cover"
+                />
+              </motion.div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+            >
+              <div className="space-y-6">
+                <div className="flex items-start">
+                  <div className="flex-shrink-0 bg-green-100 p-3 rounded-full mr-4">
+                    <Users className="text-green-600" size={28} />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-2">Talent Discovery</h3>
+                    <p className="text-gray-600">
+                      Scouting raw talent across Kenya and East Africa through nationwide auditions and digital submissions
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start">
+                  <div className="flex-shrink-0 bg-amber-100 p-3 rounded-full mr-4">
+                    <Volume2 className="text-amber-600" size={28} />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-2">Professional Production</h3>
+                    <p className="text-gray-600">
+                      Full access to our world-class studio facilities for recording, mixing, and mastering
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start">
+                  <div className="flex-shrink-0 bg-green-100 p-3 rounded-full mr-4">
+                    <Monitor className="text-green-600" size={28} />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-2">Marketing & Promotion</h3>
+                    <p className="text-gray-600">
+                      Strategic digital marketing, playlist placements, and media exposure for your music
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start">
+                  <div className="flex-shrink-0 bg-amber-100 p-3 rounded-full mr-4">
+                    <Award className="text-amber-600" size={28} />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold mb-2">Industry Connections</h3>
+                    <p className="text-gray-600">
+                      Networking opportunities with established artists, producers, and record labels
+                    </p>
+                  </div>
+                </div>
+
+                <motion.div
+                  className="pt-6"
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.4, duration: 0.6 }}
+                >
+                  <div className="bg-amber-50 p-6 rounded-2xl border border-amber-100">
+                    <h4 className="font-bold text-amber-800 mb-4 flex items-center">
+                      <Calendar className="mr-2" size={20} />
+                      Launching Soon!
+                    </h4>
+                    <p className="text-gray-700 mb-4">
+                      The Jenga Msani program will open for applications in Q3 2025. 
+                      For inquiries about talent opportunities, contact us directly:
+                    </p>
+                    
+                    <motion.a
+                      href="tel:0745798255"
+                      className="inline-flex items-center bg-green-600 text-white px-6 py-3 rounded-full font-medium hover:bg-green-700 transition-colors"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <Phone className="mr-2" size={20} />
+                      Call: 0745 798 255
+                    </motion.a>
+                    
+                    <div className="mt-6 grid grid-cols-3 gap-2">
+                      <motion.div 
+                        className="h-24 rounded-lg overflow-hidden"
+                        whileHover={{ scale: 1.05 }}
+                      >
+                        <img 
+                          src="/images/msani2.jpg" 
+                          alt="Jenga Msani" 
+                          className="w-full h-full object-cover"
+                        />
+                      </motion.div>
+                      <motion.div 
+                        className="h-24 rounded-lg overflow-hidden"
+                        whileHover={{ scale: 1.05 }}
+                      >
+                        <img 
+                          src="/images/msani3.jpg" 
+                          alt="Jenga Msani" 
+                          className="w-full h-full object-cover"
+                        />
+                      </motion.div>
+                      <motion.div 
+                        className="h-24 rounded-lg overflow-hidden"
+                        whileHover={{ scale: 1.05 }}
+                      >
+                        <img 
+                          src="/images/msani4.jpg" 
+                          alt="Jenga Msani" 
+                          className="w-full h-full object-cover"
+                        />
+                      </motion.div>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Client Showcase */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 md:px-8">
@@ -614,7 +793,7 @@ const About = () => {
               className="mr-4"
             >
               <img 
-                src="/images/logo.png" 
+                src="/images/kido.jpg" 
                 alt="African Masters Logo" 
                 className="w-14 h-14"
               />

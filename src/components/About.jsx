@@ -627,10 +627,10 @@ const About = () => {
                   <div className="bg-amber-50 p-6 rounded-2xl border border-amber-100">
                     <h4 className="font-bold text-amber-800 mb-4 flex items-center">
                       <Calendar className="mr-2" size={20} />
-                      Launching Soon!
+                      Get Ready for Our Next Edition!
                     </h4>
                     <p className="text-gray-700 mb-4">
-                      The Jenga Msani program will open for applications in Q3 2025. 
+                      The Jenga Msani program is upcoming project aiming at identifying and supporting talented artist contry wide. 
                       For inquiries about talent opportunities, contact us directly:
                     </p>
                     
